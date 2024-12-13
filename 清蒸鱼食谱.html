@@ -23,7 +23,7 @@
         
         .recipe-card {
             width: 100%;
-            max-width: 768px;
+            max-width: 768px;/* 或者更大的百分比 */
             background: white;
             border-radius: 1rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -37,6 +37,7 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            
         }
         
         .avatar {
@@ -49,6 +50,9 @@
             justify-content: center;
             font-size: 2.5rem;
             box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+            /* 保持圆形 */
+            border-radius: 50%;
+            aspect-ratio: 1/1;  /* 添加这行确保宽高比永远是1:1 */
         }
         
         .title-section h1 {
@@ -73,12 +77,17 @@
             background: #f0f9ff;
             padding: 1rem;
             display: flex;
-            justify-content: center;
             gap: 2rem;
             margin: 1rem;
             border-radius: 0.5rem;
-            flex-wrap: nowrap;
-            white-space: nowrap;
+            /* 移除 flex-wrap: wrap */
+            gap: 1rem;
+            font-size: 1rem;
+            /* 添加以下属性 */
+            overflow-x: auto; /* 允许横向滚动 */
+            white-space: nowrap; /* 防止文字换行 */
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+            scrollbar-width: none; /* 隐藏滚动条 */
         }
         
         .info-item {

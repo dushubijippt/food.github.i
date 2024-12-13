@@ -25,7 +25,7 @@
             background: white;
             border-radius: 1rem;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            max-width: 768px;
+            max-width: 768px;/* 或者更大的百分比 */
             width: 100%;
             overflow: hidden;
         }
@@ -78,9 +78,14 @@
             padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            /* 移除 flex-wrap: wrap */
             gap: 1rem;
             font-size: 1rem;
+            /* 添加以下属性 */
+            overflow-x: auto; /* 允许横向滚动 */
+            white-space: nowrap; /* 防止文字换行 */
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+            scrollbar-width: none; /* 隐藏滚动条 */
         }
 
         .info-item {

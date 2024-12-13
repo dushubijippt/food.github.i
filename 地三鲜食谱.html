@@ -25,7 +25,7 @@
             background: white;
             border-radius: 1rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            max-width: 768px;
+            max-width: 768px;/* 或者更大的百分比 */
             width: 100%;
             overflow: hidden;
         }
@@ -48,17 +48,30 @@
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
+            border-radius: 50%;/*保持圆形*/
+            aspect-ratio: 1/1;  /* 添加这行确保宽高比永远是1:1 */
         }
 
         .dish-info h1 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            min-width: 0; /* 允许子元素收缩 */
+            flex: 1; /* 允许占据剩余空间 */
         }
 
         .tags {
             display: flex;
             gap: 0.5rem;
-        }
+            /* 修改以下属性 */
+            overflow-x: auto; /* 允许水平滚动 */
+            white-space: nowrap; /* 防止文本换行 */
+            width: 100%; /* 确保占满容器宽度 */
+            flex-wrap: nowrap; /* 禁止换行 */
+            -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
+            scrollbar-width: none; /* Firefox隐藏滚动条 */
+            -ms-overflow-style: none; /* IE和Edge隐藏滚动条 */
+            padding-bottom: 5px; /* 底部留出间距 */
+}
 
         .tag {
             background: rgba(255, 255, 255, 0.2);
@@ -72,9 +85,15 @@
             padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            /* 移除 flex-wrap: wrap */
             gap: 1rem;
             font-size: 1rem;
+            /* 添加以下属性 */
+            overflow-x: auto; /* 允许横向滚动 */
+            white-space: nowrap; /* 防止文字换行 */
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+            scrollbar-width: none; /* 隐藏滚动条 */
+            -ms-overflow-style: none;
         }
 
         .info-item {
@@ -216,9 +235,9 @@
         </div>
 
         <div class="cooking-info">
-            <div class="info-item">⏱ 备料：10分钟</div>
-            <div class="info-item">🔥 烹饪：15分钟</div>
-            <div class="info-item">📝 难度：新手可做</div>
+            <div class="info-item">⏱️ 备料10分钟</div> 
+            <div class="info-item">🔥 烹饪15分钟</div>
+            <div class="info-item">📝 新手可做</div>
         </div>
 
         <div class="ingredients">

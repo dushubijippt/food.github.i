@@ -24,7 +24,7 @@
 
         .container {
             width: 100%;
-            max-width: 42rem;
+            max-width: 768px;
             margin: 0 auto;
             background-color: white;
             border-radius: 16px;
@@ -47,6 +47,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
+            aspect-ratio: 1/1;  /* 添加这行确保宽高比永远是1:1 */
             background-color: white;
             display: flex;
             justify-content: center;
@@ -89,6 +90,11 @@
             flex-wrap: nowrap;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+            &::-webkit-scrollbar {
+                display: none;  /* Chrome and Safari */
+            }
             gap: 24px;
         }
 
@@ -280,6 +286,15 @@
                 width: 60px;
                 height: 60px;
             }
+        }
+        /* 隐藏全局滚动条 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        * {
+            -ms-overflow-style: none;  /* IE和Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
 </head>

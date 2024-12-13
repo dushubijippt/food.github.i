@@ -26,13 +26,16 @@
             background: white;
             border-radius: 1rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            max-width: 768px;
+            max-width: 768px; /* 或者更大的百分比 */
             width: 100%;
             overflow: hidden;
+            margin-top: 1.5rem;     /* 增加顶部边距 */
+            margin-bottom: 2rem;  /* 增加底部边距 */
+
         }
         
         .header {
-            background: linear-gradient(135deg, #4a90e2, #357abd);
+            background: linear-gradient(135deg, #e65c00, #F9D423);
             padding: 1.5rem;
             display: flex;
             align-items: center;
@@ -74,14 +77,14 @@
         }
         
         .info-section {
-            background: #f8f9fa;
+            background: #fff8f0;
             padding: 1rem;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 1rem;
             margin: 1rem;
             border-radius: 0.5rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-start;
+            white-space: nowrap;
         }
         
         .info-item {
@@ -111,7 +114,7 @@
         }
         
         .ingredient-item {
-            background: #f8f9fa;
+            background: #fff8f0;
             padding: 0.75rem;
             border-radius: 0.5rem;
             display: flex;
@@ -160,7 +163,7 @@
         }
         
         .rating-item {
-            background: #f8f9fa;
+            background: #fff8f0;
             padding: 0.5rem 1rem;
             border-radius: 1rem;
             display: flex;
@@ -170,7 +173,7 @@
         }
         
         .footer {
-            background: #f8f9fa;
+            background: #fff8f0;
             padding: 1.5rem;
             margin-top: 1rem;
             text-align: center;
@@ -188,16 +191,16 @@
                 <h1 class="title">宫保鸡丁</h1>
                 <div class="tags">
                     <span class="tag">川菜</span>
-                    <span class="tag">辣味</span>
-                    <span class="tag">咸鲜</span>
+                    <span class="tag">麻辣</span>
+                    <span class="tag">经典</span>
                 </div>
             </div>
         </div>
 
         <div class="info-section">
-            <div class="info-item">⏱️ 准备：20分钟</div>
-            <div class="info-item">🔥 烹饪：15分钟</div>
-            <div class="info-item">🎯 难度：中等</div>
+            <div class="info-item">⏱️ 备料20分钟</div>
+            <div class="info-item">🔥 烹饪8分钟</div>
+            <div class="info-item">🎯 中等难度</div>
         </div>
 
         <div class="ingredients-section">
@@ -206,73 +209,75 @@
                 <div class="ingredient-item">🍗 鸡腿肉 300g</div>
                 <div class="ingredient-item">🥜 花生米 50g</div>
                 <div class="ingredient-item">🧄 大蒜 3瓣</div>
-                <div class="ingredient-item">🧅 大葱 1根</div>
-                <div class="ingredient-item">🌶️ 干辣椒 8-10个</div>
-                <div class="ingredient-item">🌿 花椒 1小匙</div>
+                <div class="ingredient-item">🧅 葱花 2汤匙</div>
+                <div class="ingredient-item">🥠 生姜 3片</div>
+                <div class="ingredient-item">🌶️ 干辣椒 8个</div>
+                <div class="ingredient-item">🌿 花椒 1茶匙</div>
                 <div class="ingredient-item">🥄 生抽 2汤匙</div>
-                <div class="ingredient-item">🥄 老抽 1小匙</div>
+                <div class="ingredient-item">🥄 老抽 1茶匙</div>
                 <div class="ingredient-item">🥄 料酒 1汤匙</div>
-                <div class="ingredient-item">🧂 盐 适量</div>
-                <div class="ingredient-item">🍯 糖 2小匙</div>
+                <div class="ingredient-item">🧂 盐 1茶匙</div>
+                <div class="ingredient-item">🍯 白糖 2茶匙</div>
                 <div class="ingredient-item">🥄 醋 2汤匙</div>
+                <div class="ingredient-item">🥄 淀粉 1汤匙</div>
             </div>
         </div>
 
         <div class="steps-section">
             <h2 class="section-title">📝 制作步骤</h2>
-            <div class="step-item" style="background: #e3f2fd;">
+            <div class="step-item" style="background: #fff8f0;">
                 <div class="step-header">
-                    1. 处理鸡肉 ⏱️ 5分钟
+                    1. 腌制鸡肉 ⏱️ 15分钟
                 </div>
-                <div class="step-description">鸡腿去骨，带皮切丁</div>
-                <div class="step-key-info">刀工要求：丁状大小均匀，约1.5cm见方</div>
+                <div class="step-description">鸡腿去骨，带皮切1.5cm见方的丁，加入生抽1汤匙、料酒1汤匙、淀粉1茶匙腌制</div>
+                <div class="step-key-info">切丁大小均匀，保持带皮，防止炒制时变柴</div>
             </div>
 
-            <div class="step-item" style="background: #f3e5f5;">
+            <div class="step-item" style="background: #fff8f0;">
                 <div class="step-header">
-                    2. 腌制 ⏱️ 10分钟
+                    2. 配料准备 ⏱️ 5分钟
                 </div>
-                <div class="step-description">用生抽、料酒和淀粉码味</div>
-                <div class="step-key-info">腌制时间：至少10分钟，充分入味</div>
+                <div class="step-description">蒜切片，姜切丝，葱切段，干辣椒斜切段，花生米提前炒熟备用</div>
+                <div class="step-key-info">干辣椒去籽，花生米炒至金黄酥脆</div>
             </div>
 
-            <div class="step-item" style="background: #e8f5e9;">
+            <div class="step-item" style="background: #fff8f0;">
                 <div class="step-header">
-                    3. 炸花生 ⏱️ 3分钟
+                    3. 调制酱汁 ⏱️ 3分钟
                 </div>
-                <div class="step-description">花生米小火少油炸至金黄</div>
-                <div class="step-key-info">火候：小火慢炸，直至表面呈金黄色</div>
+                <div class="step-description">混合生抽1汤匙、老抽1茶匙、白糖2茶匙、醋2汤匙、盐1茶匙、水1汤匙、淀粉1茶匙</div>
+                <div class="step-key-info">调汁均匀无颗粒，味道要偏咸甜</div>
             </div>
 
-            <div class="step-item" style="background: #fff3e0;">
+            <div class="step-item" style="background: #fff8f0;">
                 <div class="step-header">
-                    4. 调制酱汁 ⏱️ 2分钟
+                    4. 爆香配料 ⏱️ 2分钟
                 </div>
-                <div class="step-description">糖、醋、生抽、老抽、盐和淀粉调制碗芡</div>
-                <div class="step-key-info">比例：2:2:1:0.5:0.5:1，搅拌均匀</div>
+                <div class="step-description">热油锅，下花椒、干辣椒中火爆香，炒至辣椒酥脆变色</div>
+                <div class="step-key-info">火候：中火，辣椒须炒至棕红色且略带焦香</div>
             </div>
 
-            <div class="step-item" style="background: #fce4ec;">
+            <div class="step-item" style="background: #fff8f0;">
                 <div class="step-header">
-                    5. 最终烹饪 ⏱️ 5分钟
+                    5. 最终烹饪 ⏱️ 3分钟
                 </div>
-                <div class="step-description">大火爆炒干辣椒花椒，加入鸡丁炒至变色，加入配料，最后收汁</div>
-                <div class="step-key-info">火候：全程大火快炒，辣椒需炒至棕红色，收汁要干净利落</div>
+                <div class="step-description">加入鸡丁大火快炒至七分熟，加入葱姜蒜爆香，倒入酱汁收汁，最后加入花生米</div>
+                <div class="step-key-info">火候：大火快炒，收汁要够干，汤汁均匀裹住鸡丁</div>
             </div>
         </div>
 
         <div class="ratings-section">
-            <h2 class="section-title">⭐ 特色评价</h2>
+            <h2 class="section-title">⭐ 特色亮点</h2>
             <div class="ratings-container">
-                <div class="rating-item">🔥 正宗川味</div>
-                <div class="rating-item">👨‍🍳 考验刀工</div>
-                <div class="rating-item">⚡ 快速烹饪</div>
-                <div class="rating-item">💪 技术要求高</div>
+                <div class="rating-item">🔥 入口麻辣</div>
+                <div class="rating-item">🥜 花生酥香</div>
+                <div class="rating-item">💪 鸡肉嫩滑</div>
+                <div class="rating-item">⚡ 汁亮味浓</div>
             </div>
         </div>
 
         <div class="footer">
-            "麻辣鲜香，色泽金黄，一品川系经典名菜"
+            "麻辣鲜香，汁亮味浓，一品川菜精华"
         </div>
     </div>
 </body>

@@ -22,7 +22,7 @@
 
         .container {
             width: 100%;
-            max-width: 42rem;
+            max-width: 768px;
             margin: 1.5rem auto;
             background: white;
             border-radius: 1rem;
@@ -32,7 +32,7 @@
 
         .header {
             background: linear-gradient(135deg, #ee4d2d, #ff7875);
-            padding: 1rem;
+            padding: 2rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -45,10 +45,11 @@
         }
 
         .icon {
-            width: 3.5rem;
-            height: 3.5rem;
+            width: 80px;
+            height: 80px;
             background: white;
             border-radius: 50%;
+            aspect-ratio: 1/1;  /* 添加这行确保宽高比永远是1:1 */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -100,12 +101,16 @@
         }
 
         .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
             background: #f9f9f9;
             padding: 1rem;
             border-radius: 0.75rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
 
         .info-item {

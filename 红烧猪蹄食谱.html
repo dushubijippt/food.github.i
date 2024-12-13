@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红烧猪蹄食谱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            background-color: #fff5f5;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #c53030, #e53e3e);
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .cooking-info {
+            background: #fff5f5;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .ingredients {
+            padding: 1rem;
+            background: #fff;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #c53030;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .ingredient-item {
+            background: #fff5f5;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .steps {
+            padding: 1rem;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .step:nth-child(4n+1) { background: #fef2f2; }
+        .step:nth-child(4n+2) { background: #fff5f5; }
+        .step:nth-child(4n+3) { background: #fee2e2; }
+        .step:nth-child(4n+4) { background: #fecaca; }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #c53030;
+        }
+
+        .step-time {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .step-content {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        .ratings {
+            padding: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .rating-item {
+            background: #fff5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: #fef2f2;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .slogan {
+            font-style: italic;
+            color: #c53030;
+            font-size: 1.125rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🍖</div>
+            <div class="title-section">
+                <h1>红烧猪蹄</h1>
+                <div class="tags">
+                    <span class="tag">红烧</span>
+                    <span class="tag">大菜</span>
+                    <span class="tag">下酒菜</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cooking-info">
+            <div class="info-item">⏱️ 准备：20分钟</div>
+            <div class="info-item">🔥 烹饪：90分钟</div>
+            <div class="info-item">⭐ 难度：中等</div>
+        </div>
+
+        <div class="ingredients">
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🍖 前猪蹄 1000g</div>
+                <div class="ingredient-item">🧄 蒜瓣 3个</div>
+                <div class="ingredient-item">🧅 葱段 3段</div>
+                <div class="ingredient-item">🧅 老姜片 3片</div>
+                <div class="ingredient-item">🌟 八角 2个</div>
+                <div class="ingredient-item">🍃 香叶 2片</div>
+                <div class="ingredient-item">🥮 桂皮 1块</div>
+                <div class="ingredient-item">🌶️ 干红辣椒 2个</div>
+                <div class="ingredient-item">🌰 花椒 1茶勺</div>
+                <div class="ingredient-item">🍯 冰糖 3汤勺</div>
+                <div class="ingredient-item">🍶 料酒 2汤勺</div>
+                <div class="ingredient-item">🫙 生抽 2汤勺</div>
+                <div class="ingredient-item">🫙 老抽 1茶勺</div>
+                <div class="ingredient-item">🧂 盐 1茶勺</div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="section-title">📝 制作步骤</div>
+            
+            <div class="step">
+                <div class="step-header">
+                    1. 前期处理
+                    <span class="step-time">⏱️ 15分钟</span>
+                </div>
+                <div class="step-content">
+                    将前猪蹄洗净，剁成4-5厘米大小的块。放入冷水锅中，加入1汤勺料酒，大火煮沸后继续煮3分钟
+                    <div class="key-info">焯水时注意撇去浮沫，水要完全没过猪蹄，焯好后用温水冲洗干净去腥</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    2. 调味料准备
+                    <span class="step-time">⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    将3片姜切片，3瓣蒜略微拍碎，3段葱切段。准备2个八角、2片香叶、1块桂皮、2个干红辣椒、1茶勺花椒
+                    <div class="key-info">香料准备时最好不要破碎，以便后期好捞出，干辣椒剪段以释放辣味</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    3. 制作糖色
+                    <span class="step-time">⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    锅中倒入2汤勺油，中小火加入3汤勺冰糖，不断搅拌至冰糖完全融化呈琥珀色
+                    <div class="key-info">糖色要控制火候，颜色太深会发苦，要在冰糖刚变成金黄色时停止</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    4. 炒制香料
+                    <span class="step-time">⏱️ 3分钟</span>
+                </div>
+                <div class="step-content">
+                    将准备好的姜片、蒜瓣、葱段和所有香料倒入锅中，中火翻炒出香味
+                    <div class="key-info">炒至香料变色，葱姜蒜略微发黄，香味四溢时即可</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    5. 上色调味
+                    <span class="step-time">⏱️ 10分钟</span>
+                </div>
+                <div class="step-content">
+                    倒入焯好的猪蹄，加入2汤勺生抽、1茶勺老抽、1汤勺料酒，大火翻炒均匀
+                    <div class="key-info">翻炒时注意控制火候，确保每块猪蹄都均匀裹上酱汁</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    6. 炖煮收汁
+                    <span class="step-time">⏱️ 70分钟</span>
+                </div>
+                <div class="step-content">
+                    加入温水没过猪蹄，大火烧开后转小火炖煮60分钟。中途加入1茶勺盐调味，最后转中火收汁15分钟
+                    <div class="key-info">炖煮时盖上锅盖，汤汁收至猪蹄表面泛油光，肉质软烂即可出锅</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ratings">
+            <div class="rating-item">⭐ 色泽红亮</div>
+            <div class="rating-item">👌 软糯多汁</div>
+            <div class="rating-item">🌟 胶质丰富</div>
+            <div class="rating-item">💯 香气四溢</div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"软烂鲜香，胶质丰润，入口即化的美味享受"</div>
+        </div>
+    </div>
+</body>
+</html>

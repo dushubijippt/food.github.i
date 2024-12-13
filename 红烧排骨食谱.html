@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红烧排骨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 16px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 24px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #8B0000 0%, #CD5C5C 100%);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            padding: 24px;
+        }
+        
+        .header > * + * {
+            margin-left: 24px;
+        }
+        
+        .dish-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            flex-shrink: 0;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        
+        .dish-info h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: white !important;
+            -webkit-text-fill-color: white;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 16px;
+            color: white !important;
+            -webkit-text-fill-color: white;
+            font-size: 14px;
+        }
+        
+        .cooking-info {
+            background: #FFF5F5;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            margin-right: 32px;
+            font-size: 16px;
+        }
+        
+        .info-item:last-child {
+            margin-right: 0;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin: 24px 0 16px;
+            display: flex;
+            align-items: center;
+            color: #8B0000;
+        }
+        
+        .section-title > * + * {
+            margin-left: 8px;
+        }
+        
+        .ingredients {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            background: #FFF5F5;
+            padding: 16px;
+            border-radius: 12px;
+        }
+        
+        .ingredient-item {
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .step {
+            padding: 16px;
+            border-radius: 12px;
+            background: #FFF5F5;
+            border-left: 4px solid #8B0000;
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #8B0000;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .step-key-info {
+            font-style: italic;
+            color: rgba(139, 0, 0, 0.6);
+            margin-top: 8px;
+            border-left: 2px solid rgba(139, 0, 0, 0.2);
+            padding-left: 8px;
+        }
+        
+        .ratings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+        
+        .rating-item {
+            background: #FFF5F5;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rating-item > * + * {
+            margin-left: 8px;
+        }
+        
+        .footer {
+            background: #FFF5F5;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 24px;
+            text-align: center;
+            font-style: italic;
+            color: #8B0000;
+        }
+        
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            
+            .recipe-card {
+                padding: 16px;
+            }
+            
+            .header {
+                padding: 16px;
+            }
+            
+            .dish-image {
+                width: 80px;
+                height: 80px;
+                font-size: 36px;
+            }
+            
+            .dish-info h1 {
+                font-size: 20px;
+            }
+            
+            .info-item {
+                font-size: 14px;
+            }
+            
+            .ingredient-item {
+                font-size: 14px;
+            }
+            
+            .step-content {
+                font-size: 14px;
+            }
+            
+            .rating-item {
+                font-size: 14px;
+            }
+        }
+        
+        @supports not (gap: 12px) {
+            .tags > * + * {
+                margin-left: 8px;
+                margin-top: 8px;
+            }
+            
+            .steps > * + * {
+                margin-top: 16px;
+            }
+            
+            .ratings > * + * {
+                margin-left: 12px;
+                margin-top: 12px;
+            }
+        }
+        
+        @media not all and (min-resolution:.001dpcm) {
+            @supports (-webkit-appearance:none) {
+                .header {
+                    isolation: isolate;
+                }
+                
+                .dish-info h1,
+                .tag {
+                    position: relative;
+                    z-index: 1;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="recipe-card">
+            <div class="header">
+                <div class="dish-image">🍖</div>
+                <div class="dish-info">
+                    <h1>红烧排骨</h1>
+                    <div class="tags">
+                        <span class="tag">经典下饭</span>
+                        <span class="tag">酥烂入味</span>
+                        <span class="tag">色泽红亮</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cooking-info">
+                <div class="info-item">⏱️ 准备10分钟</div>
+                <div class="info-item">🔥 烹饪90分钟</div>
+                <div class="info-item">📊 中等难度</div>
+            </div>
+
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredients">
+                <div class="ingredient-item">🍖 排骨 400g</div>
+                <div class="ingredient-item">💧 清水 400ml</div>
+                <div class="ingredient-item">🧊 冰糖 1汤匙</div>
+                <div class="ingredient-item">🌱 葱 2根</div>
+                <div class="ingredient-item">🧄 姜 5片</div>
+                <div class="ingredient-item">🌿 桂皮 2小块</div>
+                <div class="ingredient-item">⭐ 八角 2个</div>
+                <div class="ingredient-item">🧂 盐 2茶匙</div>
+                <div class="ingredient-item">🥫 生抽 1汤匙</div>
+                <div class="ingredient-item">🍶 料酒 1汤匙</div>
+                <div class="ingredient-item">🛢️ 油 1汤匙</div>
+            </div>
+
+            <div class="section-title">📝 制作步骤</div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <span>1. 氽烫排骨</span>
+                        <span>⏱️ 5分钟</span>
+                    </div>
+                    <div class="step-content">
+                        锅中加入适量清水烧开，放入排骨氽烫至出血水，捞出洗净
+                        <div class="step-key-info">大火，水开后煮2分钟，水变浑浊时即可捞出</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span>2. 炒糖色</span>
+                        <span>⏱️ 5分钟</span>
+                    </div>
+                    <div class="step-content">
+                        锅内放1汤匙油，加入冰糖，小火熬制成糖色
+                        <div class="step-key-info">小火慢熬，糖色呈琥珀色时即可，避免炒糊</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span>3. 上色调味</span>
+                        <span>⏱️ 8分钟</span>
+                    </div>
+                    <div class="step-content">
+                        倒入排骨翻炒均匀，加入姜片、八角、桂皮，倒入料酒和生抽
+                        <div class="step-key-info">中火快炒，确保排骨均匀裹上糖色，香料爆香</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span>4. 加水焖煮</span>
+                        <span>⏱️ 60分钟</span>
+                    </div>
+                    <div class="step-content">
+                        加入清水没过排骨，大火煮沸后转小火慢炖
+                        <div class="step-key-info">盖锅小火焖煮，保持微沸，期间翻动2-3次</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <span>5. 调味收汁</span>
+                        <span>⏱️ 12分钟</span>
+                    </div>
+                    <div class="step-content">
+                        加入盐调味，挑出香料，转中火收汁至汤汁浓稠
+                        <div class="step-key-info">汤汁裹住排骨表面，呈粘稠状态，排骨色泽红亮</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ratings">
+                <div class="rating-item">⭐ 下饭神器</div>
+                <div class="rating-item">💪 开胃解馋</div>
+                <div class="rating-item">❗ 适量食用</div>
+            </div>
+
+            <div class="footer">
+                "红烧入味，酥烂鲜香，一口咬下满是幸福"
+            </div>
+        </div>
+    </div>
+</body>
+</html>

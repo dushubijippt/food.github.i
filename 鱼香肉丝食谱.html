@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            padding: 1rem;
+        }
+        
+        .recipe-card {
+            width: 100%;
+            max-width: 768px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4F46E5, #818CF8);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: white;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .title-section h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .cooking-info {
+            background: #F3F4F6;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            padding: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .ingredient-item {
+            background: #F3F4F6;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .step {
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .step:nth-child(4n+1) { background: #EEF2FF; }
+        .step:nth-child(4n+2) { background: #F0FDF4; }
+        .step:nth-child(4n+3) { background: #FAF5FF; }
+        .step:nth-child(4n+4) { background: #FFF7ED; }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .step-description {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .step-key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+        
+        .ratings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .rating-item {
+            background: #F3F4F6;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            background: #F3F4F6;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .slogan {
+            font-style: italic;
+            font-size: 1.125rem;
+            color: #4B5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🥘</div>
+            <div class="title-section">
+                <h1>鱼香肉丝（不辣版）</h1>
+                <div class="tags">
+                    <span class="tag">家常菜</span>
+                    <span class="tag">川菜</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cooking-info">
+            <div class="info-item">⏱️ 准备：30分钟</div>
+            <div class="info-item">🔥 烹饪：15分钟</div>
+            <div class="info-item">⭐ 难度：中等</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🥩 瘦肉丝：250克</div>
+                <div class="ingredient-item">🍄 黑木耳：1把</div>
+                <div class="ingredient-item">🥕 胡萝卜：半根</div>
+                <div class="ingredient-item">🫑 青椒：2个</div>
+                <div class="ingredient-item">🧄 葱姜蒜：适量</div>
+                <div class="ingredient-item">🥫 豆瓣酱：1勺</div>
+                <div class="ingredient-item">🥄 香醋：4勺</div>
+                <div class="ingredient-item">🧂 白砂糖：3勺</div>
+                <div class="ingredient-item">🍶 生抽：2勺</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">📝 制作步骤</div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        1. 准备工作
+                        <span>⏱️ 20分钟</span>
+                    </div>
+                    <div class="step-description">木耳泡发，瘦肉切丝并腌制</div>
+                    <div class="step-key-info">腌制：白胡椒粉、料酒、淀粉、生抽、老抽，充分按摩入味</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        2. 切配
+                        <span>⏱️ 10分钟</span>
+                    </div>
+                    <div class="step-description">木耳切丝，胡萝卜青椒切丝，葱姜蒜切末</div>
+                    <div class="step-key-info">切丝宽度要均匀，约0.3cm宽度最佳</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        3. 炒肉
+                        <span>⏱️ 3分钟</span>
+                    </div>
+                    <div class="step-description">多油大火快炒肉丝至变色</div>
+                    <div class="step-key-info">火候：大火快炒，见肉丝变白即可铲出，留油</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        4. 炒料
+                        <span>⏱️ 5分钟</span>
+                    </div>
+                    <div class="step-description">依次下胡萝卜、豆瓣酱、葱姜蒜、木耳青椒</div>
+                    <div class="step-key-info">火候：中火，炒至豆瓣酱表面油光发亮，香气四溢</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        5. 收汁
+                        <span>⏱️ 2分钟</span>
+                    </div>
+                    <div class="step-description">放入肉丝，沿锅边淋入调味汁快速翻炒</div>
+                    <div class="step-key-info">火候：大火快炒，汤汁浓稠裹住食材即可出锅</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">⭐ 评价</div>
+            <div class="ratings">
+                <div class="rating-item">🌟 下饭神器</div>
+                <div class="rating-item">👨‍👩‍👧‍👦 全家适合</div>
+                <div class="rating-item">🔥 香辣可选</div>
+                <div class="rating-item">💪 营养均衡</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"一道让记忆中的味道重现的经典川菜"</div>
+        </div>
+    </div>
+</body>
+</html>

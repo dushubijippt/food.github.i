@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肉沫茄子食谱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+            min-height: 100vh;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 768px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #6B4593, #9B6B9D);
+            color: white;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .recipe-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .recipe-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+        }
+        
+        .info-section {
+            background: #F8F4FF;
+            padding: 20px;
+            margin: 16px;
+            border-radius: 12px;
+        }
+        
+        .cooking-info {
+            display: flex;
+            justify-content: flex-start;
+            gap: 32px;
+            font-size: 16px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            padding: 16px;
+        }
+        
+        .ingredient-item {
+            background: #F3EEFF;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .steps-section {
+            padding: 16px;
+        }
+        
+        .step-item {
+            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            background: #F6F0FF;
+            border-left: 4px solid #9B6B9D;
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #6B4593;
+        }
+        
+        .step-content {
+            color: rgba(0, 0, 0, 0.7);
+            line-height: 1.6;
+        }
+        
+        .key-info {
+            font-style: italic;
+            color: rgba(107, 69, 147, 0.8);
+            margin-top: 8px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(107, 69, 147, 0.2);
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 24px 16px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6B4593;
+        }
+        
+        .ratings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 16px;
+        }
+        
+        .rating-item {
+            background: #F3EEFF;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+            border: 1px solid rgba(107, 69, 147, 0.1);
+        }
+        
+        .footer {
+            background: #F8F4FF;
+            padding: 20px;
+            margin: 16px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #6B4593;
+        }
+
+        @media (max-width: 480px) {
+            .cooking-info {
+                overflow-x: auto;
+                padding-bottom: 8px;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        /* Subtle hover effects */
+        .ingredient-item:hover, .rating-item:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(107, 69, 147, 0.1);
+        }
+
+        .step-item:hover {
+            box-shadow: 0 2px 8px rgba(107, 69, 147, 0.1);
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Previous HTML content remains exactly the same -->
+    <div class="recipe-card">
+        <div class="header">
+            <div class="recipe-avatar">🍆</div>
+            <div>
+                <h1 class="recipe-title">肉沫茄子</h1>
+                <div class="tags">
+                    <span class="tag">咸鲜</span>
+                    <span class="tag">开胃</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">⏰ 烹饪信息</div>
+        <div class="info-section">
+            <div class="cooking-info">
+                <div class="info-item">🕐 备料 10分钟</div>
+                <div class="info-item">🍳 烹饪 15分钟</div>
+                <div class="info-item">⭐ 难度 新手</div>
+            </div>
+        </div>
+
+        <div class="section-title">🥘 食材及调料</div>
+        <div class="ingredients-grid">
+            <div class="ingredient-item">🍆 茄子 1大个</div>
+            <div class="ingredient-item">🥩 肉末 150克</div>
+            <div class="ingredient-item">🧄 蒜瓣 3瓣</div>
+            <div class="ingredient-item">🧅 姜片 2片</div>
+            <div class="ingredient-item">🌿 葱花 2根</div>
+            <div class="ingredient-item">🌶️ 小米辣 1个</div>
+            <div class="ingredient-item">🧂 生抽 2汤勺</div>
+            <div class="ingredient-item">🫘 老抽 1/2汤勺</div>
+            <div class="ingredient-item">🦪 蚝油 1汤勺</div>
+            <div class="ingredient-item">🍶 陈醋 1汤勺</div>
+            <div class="ingredient-item">🧂 白糖 1茶勺</div>
+            <div class="ingredient-item">💧 清水 2汤勺</div>
+            <div class="ingredient-item">🌾 淀粉 1汤勺</div>
+            <div class="ingredient-item">🍶 料酒 1汤勺</div>
+        </div>
+
+        <div class="section-title">📝 制作步骤</div>
+        <div class="steps-section">
+            <div class="step-item">
+                <div class="step-header">
+                    <div>1. 茄子处理</div>
+                    <div>⏱️ 7分钟</div>
+                </div>
+                <div class="step-content">
+                    茄子去皮切成4厘米长的滚刀块，放蒸锅中大火蒸5分钟
+                    <div class="key-info">蒸制后倒掉盘中积水，避免后续炒制时吸油</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>2. 配料准备</div>
+                    <div>⏱️ 5分钟</div>
+                </div>
+                <div class="step-content">
+                    蒜瓣剁碎，姜片切末，小米辣切圈，葱花切段
+                    <div class="key-info">配料切碎需均匀，辣椒可依据口味增减</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>3. 调制酱汁</div>
+                    <div>⏱️ 3分钟</div>
+                </div>
+                <div class="step-content">
+                    碗中混合生抽2汤勺、老抽1/2汤勺、蚝油1汤勺、陈醋1汤勺、白糖1茶勺、清水2汤勺，最后加入1汤勺淀粉调匀
+                    <div class="key-info">先混合调料再加淀粉，确保淀粉充分溶解无颗粒</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>4. 爆香配料</div>
+                    <div>⏱️ 2分钟</div>
+                </div>
+                <div class="step-content">
+                    锅中倒入2汤勺油，中火加热，放入蒜末、姜末和辣椒圈爆香
+                    <div class="key-info">中小火爆香，注意不要烧糊，闻到香味即可</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>5. 炒制肉末</div>
+                    <div>⏱️ 3分钟</div>
+                </div>
+                <div class="step-content">
+                    加入肉末快速翻炒，待肉末变色后沿锅边加入1汤勺料酒提香
+                    <div class="key-info">中火快炒至肉末完全变色，料酒要沿锅边淋入</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>6. 加入茄子</div>
+                    <div>⏱️ 2分钟</div>
+                </div>
+                <div class="step-content">
+                    倒入蒸好的茄子，翻炒均匀
+                    <div class="key-info">轻轻翻炒避免茄子断裂，确保均匀入味</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>7. 收汁调味</div>
+                    <div>⏱️ 3分钟</div>
+                </div>
+                <div class="step-content">
+                    倒入调好的酱汁，转大火快速翻炒收汁，最后加入葱花
+                    <div class="key-info">大火快速收汁至略粘稠，汤汁裹住茄子即可</div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <div>8. 装盘</div>
+                    <div>⏱️ 1分钟</div>
+                </div>
+                <div class="step-content">
+                    将炒好的肉沫茄子盛入盘中，撒上少许葱花点缀
+                    <div class="key-info">装盘时注意摆盘造型，提升视觉效果</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">⭐ 特色</div>
+        <div class="ratings">
+            <div class="rating-item">👍 少油健康</div>
+            <div class="rating-item">🔥 入味下饭</div>
+            <div class="rating-item">⚡ 新手易上手</div>
+            <div class="rating-item">💪 开胃解腻</div>
+        </div>
+
+        <div class="footer">
+            <div>"鲜嫩茄子遇上香辣肉沫，简单烹饪的美味享受"</div>
+            <div>📱</div>
+        </div>
+    </div>
+</body>
+</html>

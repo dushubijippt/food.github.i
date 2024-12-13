@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 768px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e53e3e, #dd6b20);
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .recipe-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .recipe-title {
+            flex: 1;
+        }
+
+        .recipe-title h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .info-section {
+            background: #fff5f5;
+            padding: 1.25rem;
+            margin: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        .cooking-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            white-space: nowrap;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #c53030;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .ingredient-item {
+            background: #fff8f0;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-item {
+            background: #fff8f0;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #dd6b20;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: #c53030;
+        }
+
+        .step-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .step-key-info {
+            color: #718096;
+            font-style: italic;
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid #dd6b20;
+        }
+
+        .ratings {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .rating-item {
+            background: #fff8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .footer {
+            background: #fff5f5;
+            padding: 1.25rem;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slogan {
+            font-style: italic;
+            color: #c53030;
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tags {
+                justify-content: center;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fff5f5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #dd6b20;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <header class="header">
+            <div class="recipe-avatar">🐟</div>
+            <div class="recipe-title">
+                <h1>川式酸菜鱼</h1>
+                <div class="tags">
+                    <span class="tag">酸辣</span>
+                    <span class="tag">鲜香</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="info-section">
+            <div class="cooking-info">
+                <div class="info-item">⏱️ 准备时间：45分钟</div>
+                <div class="info-item">🔥 烹饪时间：35分钟</div>
+                <div class="info-item">👨‍🍳 难度：中等</div>
+                <div class="info-item">🍽️ 份量：4-6人食</div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">🥘 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🐟 草鱼 4-5斤</div>
+                <div class="ingredient-item">🥬 酸菜 2棵</div>
+                <div class="ingredient-item">🌶️ 泡椒 1小包</div>
+                <div class="ingredient-item">🥚 蛋清 2个</div>
+                <div class="ingredient-item">🧂 盐 2汤勺</div>
+                <div class="ingredient-item">🍶 料酒 3汤勺</div>
+                <div class="ingredient-item">🌶️ 花椒 2茶勺</div>
+                <div class="ingredient-item">🧄 蒜 8瓣</div>
+                <div class="ingredient-item">🥜 姜 6片</div>
+                <div class="ingredient-item">🌿 香菜 1把</div>
+                <div class="ingredient-item">🧂 胡椒粉 1茶勺</div>
+                <div class="ingredient-item">🌶️ 红辣椒 4个</div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">📝 制作步骤</h2>
+            <div class="step-item">
+                <div class="step-header">
+                    <span>1. 鱼肉处理</span>
+                    <span>⏱️ 15分钟</span>
+                </div>
+                <div class="step-content">
+                    将草鱼处理成鱼片、鱼头和鱼骨。鱼肉切片时保持45度斜角，厚度均匀约2-3毫米。将切好的鱼片用流动水冲洗干净，确保没有血沫，沥干水份备用。
+                    <div class="step-key-info">
+                        技巧：切片方向与鱼肉纹理呈45度角，片薄且均匀，确保口感。刀工要快，保持鱼片完整。冲洗时水流要轻柔，避免破坏鱼片。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>2. 准备配料</span>
+                    <span>⏱️ 10分钟</span>
+                </div>
+                <div class="step-content">
+                    将酸菜切成小块，蒜切末，姜片切末，香菜切碎，红辣椒切段。所有配料分类放置备用。
+                    <div class="step-key-info">
+                        处理技巧：酸菜要挤去多余水分，姜蒜末要剁细，便于入味。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>3. 腌制调味</span>
+                    <span>⏱️ 20分钟</span>
+                </div>
+                <div class="step-content">
+                    鱼片加入1汤勺料酒、1茶勺胡椒粉、1茶勺盐和2个蛋清，轻柔抓匀。鱼头鱼骨加入1汤勺料酒、1茶勺盐腌制。腌制过程中准备其他食材。
+                    <div class="step-key-info">
+                        关键：轻柔抓拌，避免破坏鱼片完整性。腌制15-20分钟入味，期间可以处理其他配料。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>4. 煎制鱼骨</span>
+                    <span>⏱️ 8分钟</span>
+                </div>
+                <div class="step-content">
+                    大火烧热锅，倒入2汤勺油，将腌制好的鱼头鱼骨煎至两面金黄色，盛出备用。锅中留底油。
+                    <div class="step-key-info">
+                        火候：大火快煎，每面约3-4分钟。视觉判断：表面金黄，略微焦香。注意煎好后要立即盛出，避免过火。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>5. 炒制底料</span>
+                    <span>⏱️ 12分钟</span>
+                </div>
+                <div class="step-content">
+                    锅中留油，放入4瓣蒜蓉、3片姜末爆香，加入酸菜翻炒2分钟，加入泡椒继续翻炒，倒入泡椒水。炒香后盛出备用，锅中留汤汁。
+                    <div class="step-key-info">
+                        火候：中大火，手法：快速翻炒。判断：酸菜变软，香气四溢。需要分批炒制，避免锅中太挤。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>6. 炖煮汤底</span>
+                    <span>⏱️ 25分钟</span>
+                </div>
+                <div class="step-content">
+                    锅中倒回炒好的配料，加入煎好的鱼头鱼骨，加入1碗清水和1汤勺料酒，大火煮开后改小火炖煮20分钟，中途加入1茶勺盐调味。
+                    <div class="step-key-info">
+                        火候：先大火后小火，汤汁浓白时加盐调味。期间注意汤量，需要时可补充开水，保持汤汁浓度。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>7. 煮制鱼片</span>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <div class="step-content">
+                    汤开后加入腌制好的鱼片，用筷子轻轻打散，待鱼片变色即可关火。撒入剩余姜蒜末和香菜末。
+                    <div class="step-key-info">
+                        关键：鱼片下锅后不要搅动，以免破碎。变色即可，不要过度烹饪。注意将鱼片均匀铺开，确保每片都被汤汁包裹。
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-header">
+                    <span>8. 泼油提香</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    另起锅，倒入3汤勺油烧至七成热，放入2茶勺花椒和切段红辣椒爆香，立即将热油泼在鱼片表面，撒上剩余香菜点缀。
+                    <div class="step-key-info">
+                        火候：油温7成热（约180度），花椒爆香即可，避免焦糊。泼油时注

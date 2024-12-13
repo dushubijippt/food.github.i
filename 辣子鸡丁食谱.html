@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Noto Sans SC', sans-serif;
+            background-color: #f5f5f5;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .recipe-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #DC2626, #EF4444);
+            padding: 1.5rem;
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar {
+            width: 5rem;
+            height: 5rem;
+            background: white;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .title {
+            flex-grow: 1;
+        }
+
+        .title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            -webkit-text-fill-color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: white;
+            -webkit-text-fill-color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .section {
+            padding: 1.5rem;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #DC2626;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cooking-info {
+            background: #FEF2F2;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .ingredient {
+            background: #FEF2F2;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .step {
+            background: #FEF2F2;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step:nth-child(4n+2) { background: #FEF3C7; }
+        .step:nth-child(4n+3) { background: #FDE68A; }
+        .step:nth-child(4n+4) { background: #FEE2E2; }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title {
+            font-weight: 700;
+        }
+
+        .step-time {
+            color: #4B5563;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: rgba(55, 65, 81, 0.8);
+            margin-top: 0.5rem;
+            border-left: 2px solid #DC2626;
+            padding-left: 0.5rem;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: white;
+            border: 1px solid #FECACA;
+            color: #DC2626;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FEF2F2;
+            padding: 1.5rem;
+        }
+
+        .slogan {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #DC2626;
+        }
+
+        .qrcode {
+            width: 5rem;
+            height: 5rem;
+            background: white;
+            border: 1px solid #FECACA;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #DC2626;
+        }
+
+        @media (max-width: 640px) {
+            .cooking-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="recipe-card">
+            <header class="header">
+                <div class="header-content">
+                    <div class="avatar">
+                        🌶️
+                    </div>
+                    <div class="title">
+                        <h1>辣子鸡丁</h1>
+                        <div class="tags">
+                            <span class="tag">麻辣鲜香</span>
+                            <span class="tag">川菜经典</span>
+                            <span class="tag">下饭首选</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="cooking-info">
+                <div class="info-item">⏱️ 准备：20分钟</div>
+                <div class="info-item">🔥 烹饪：30分钟</div>
+                <div class="info-item">💪 难度：中等</div>
+            </div>
+
+            <section class="section">
+                <h2 class="section-title">🥘 食材及调料</h2>
+                <div class="ingredients-grid">
+                    <div class="ingredient">🍗 鸡腿 3只</div>
+                    <div class="ingredient">🌶️ 干辣椒 15-20个</div>
+                    <div class="ingredient">🥚 蛋清 1个</div>
+                    <div class="ingredient">🥄 淀粉 3汤勺</div>
+                    <div class="ingredient">🧅 小葱 5根</div>
+                    <div class="ingredient">🧄 蒜瓣 4-5个</div>
+                    <div class="ingredient">🥄 料酒 2汤勺</div>
+                    <div class="ingredient">🧂 盐 1茶勺</div>
+                    <div class="ingredient">🥄 五香粉 1/2茶勺</div>
+                    <div class="ingredient">🥄 生抽 1汤勺</div>
+                    <div class="ingredient">🥄 蚝油 1汤勺</div>
+                    <div class="ingredient">🥄 白糖 1茶勺</div>
+                    <div class="ingredient">🌿 花椒 2茶勺</div>
+                    <div class="ingredient">🥜 白芝麻 1汤勺</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">📝 制作步骤</h2>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">1. 腌制鸡肉</div>
+                        <div class="step-time">⏱️ 30分钟</div>
+                    </div>
+                    <p>将鸡腿肉切成2厘米见方的小块，加入1汤勺料酒、1茶勺盐、1/2茶勺五香粉、1汤勺生抽、1汤勺蚝油腌制</p>
+                    <p class="key-info">🔑 腌制时间不要少于20分钟，让调味料充分渗透入肉</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">2. 调制糊浆</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <p>腌制好的鸡肉中加入1个蛋清和3汤勺淀粉，搅拌均匀成糊状</p>
+                    <p class="key-info">🔑 淀粉要分2-3次加入，确保均匀裹附，不结团</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">3. 第一次油炸</div>
+                        <div class="step-time">⏱️ 5-6分钟</div>
+                    </div>
+                    <p>油温7成热（约170度）时，将鸡块逐个放入，炸至表面金黄</p>
+                    <p class="key-info">🔑 油温试验：筷子伸入油中，冒出细密气泡即可</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">4. 二次复炸</div>
+                        <div class="step-time">⏱️ 1-2分钟</div>
+                    </div>
+                    <p>将油温升至8成热（约190度），快速复炸至表面酥脆</p>
+                    <p class="key-info">🔑 时间要短，注意颜色变深即可出锅，避免过干</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">5. 爆香料</div>
+                        <div class="step-time">⏱️ 2-3分钟</div>
+                    </div>
+                    <p>锅中留少许油，爆香蒜末、姜丝，加入2茶勺花椒和干辣椒段炒香</p>
+                    <p class="key-info">🔑 火候要快，避免炒糊，注意干辣椒的颜色变化</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">6. 调味收尾</div>
+                        <div class="step-time">⏱️ 2分钟</div>
+                    </div>
+                    <p>放入炸好的鸡块，加入1茶勺白糖提味，最后撒入葱花和1汤勺白芝麻</p>
+                    <p class="key-info">🔑 大火快炒，保持鸡肉的酥脆度，收汁即可出锅</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">⭐ 特色亮点</h2>
+                <div class="features">
+                    <span class="feature-tag">🌶️ 麻辣适中不燥热</span>
+                    <span class="feature-tag">🍗 外酥内嫩有层次</span>
+                    <span class="feature-tag">🎯 米饭绝配好下饭</span>
+                    <span class="feature-tag">💕 香气四溢勾食欲</span>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="slogan">"川式经典，香辣诱人，舌尖上的欲罢不能"</div>
+                <div class="qrcode">扫码</div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

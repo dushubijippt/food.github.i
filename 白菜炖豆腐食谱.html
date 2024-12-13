@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background-color: #fff5f5;
+            min-height: 100vh;
+            padding: 1rem;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 42rem;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, #fff5f5 0%, #feebc8 100%);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @supports not (gap: 1.5rem) {
+            .header > * + * {
+                margin-left: 1.5rem;
+            }
+        }
+
+        .recipe-image {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 4px solid #ed8936;
+        }
+
+        .recipe-title {
+            flex: 1;
+        }
+
+        .recipe-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(237, 137, 54, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+            white-space: nowrap;
+        }
+
+        .section {
+            background: #fffaf0;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+        }
+
+        .cooking-info {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .cooking-info::-webkit-scrollbar {
+            display: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            white-space: nowrap;
+            color: #2d3748 !important;
+            -webkit-text-fill-color: #2d3748;
+            flex-shrink: 0;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .ingredient-item {
+            background: rgba(237, 137, 54, 0.1);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2d3748 !important;
+            -webkit-text-fill-color: #2d3748;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step {
+            background: rgba(237, 137, 54, 0.1);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+        }
+
+        .step-time {
+            font-size: 0.875rem;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+        }
+
+        .step-desc {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #2d3748 !important;
+            -webkit-text-fill-color: #2d3748;
+        }
+
+        .key-info {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid rgba(237, 137, 54, 0.5);
+            font-style: italic;
+            color: rgba(45, 55, 72, 0.8) !important;
+            -webkit-text-fill-color: rgba(45, 55, 72, 0.8);
+        }
+
+        .ratings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .rating-item {
+            background: rgba(237, 137, 54, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+            white-space: nowrap;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #feebc8;
+        }
+
+        .slogan {
+            font-style: italic;
+            text-align: center;
+            color: #c05621 !important;
+            -webkit-text-fill-color: #c05621;
+            font-size: 1.125rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .tags {
+                justify-content: center;
+            }
+
+            .cooking-info {
+                padding-bottom: 0.5rem;
+            }
+            
+            .ingredient-item,
+            .rating-item {
+                font-size: 0.875rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.75rem;
+            }
+        }
+
+        @media not all and (min-resolution:.001dpcm) {
+            @supports (-webkit-appearance:none) {
+                .recipe-name,
+                .tag,
+                .section-title,
+                .step-title,
+                .step-time,
+                .rating-item,
+                .slogan {
+                    color: #c05621 !important;
+                    -webkit-text-fill-color: #c05621;
+                }
+
+                .info-item,
+                .ingredient-item,
+                .step-desc {
+                    color: #2d3748 !important;
+                    -webkit-text-fill-color: #2d3748;
+                }
+
+                .key-info {
+                    color: rgba(45, 55, 72, 0.8) !important;
+                    -webkit-text-fill-color: rgba(45, 55, 72, 0.8);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="recipe-image">🥘</div>
+            <div class="recipe-title">
+                <h1 class="recipe-name">白菜炖豆腐</h1>
+                <div class="tags">
+                    <span class="tag">暖心滋补</span>
+                    <span class="tag">滑嫩鲜香</span>
+                    <span class="tag">冬季养生</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">🕒 基本信息</h2>
+            <ul class="cooking-info">
+                <li class="info-item">⏱️ 10分钟备料</li>
+                <li class="info-item">🍳 25分钟烹饪</li>
+                <li class="info-item">👨‍🍳 新手可做</li>
+                <li class="info-item">🍽️ 2-3人份</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🥗 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🥬 大白菜 半个</div>
+                <div class="ingredient-item">🧊 豆腐 半块</div>
+                <div class="ingredient-item">🥓 五花肉 100g</div>
+                <div class="ingredient-item">🧅 葱花 2汤勺</div>
+                <div class="ingredient-item">🧄 蒜 2瓣</div>
+                <div class="ingredient-item">🧄 姜 3片</div>
+                <div class="ingredient-item">⭐ 八角 1个</div>
+                <div class="ingredient-item">🌶️ 十三香 1茶勺</div>
+                <div class="ingredient-item">🍯 白糖 1茶勺</div>
+                <div class="ingredient-item">🥫 生抽 2汤勺</div>
+                <div class="ingredient-item">🥫 老抽 1茶勺</div>
+                <div class="ingredient-item">🧂 盐 2茶勺</div>
+                <div class="ingredient-item">🧂 鸡精 1茶勺</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 制作步骤</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-title">1. 食材处理</span>
+                        <span class="step-time">⏱️ 10分钟</span>
+                    </div>
+                    <div class="step-desc">
+                        白菜头撕成大片，五花肉切薄片，豆腐切2cm厚方块，葱切花，蒜拍碎，姜切片。
+                        <div class="key-info">白菜梗可另做凉菜，白菜叶要手撕成均匀大小便于入味</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-title">2. 煎炒五花肉</span>
+                        <span class="step-time">⏱️ 8分钟</span>
+                    </div>
+                    <div class="step-desc">
+                        热锅下油，放入八角，小火煸炒五花肉至金黄出油，加入蒜片姜片炒香。
+                        <div class="key-info">火候：小火慢炒，充分煎出猪油，肉片略卷曲呈金黄色</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-title">3. 炒白菜</span>
+                        <span class="step-time">⏱️ 7分钟</span>
+                    </div>
+                    <div class="step-desc">
+                        加入白菜翻炒至软，依次加入生抽、老抽、白糖，中火快炒出白菜水分。
+                        <div class="key-info">火候：中火快炒，白菜变软略透明，汤汁略粘稠即可</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-title">4. 炖煮调味</span>
+                        <span class="step-time">⏱️ 10分钟</span>
+                    </div>
+                    <div class="step-desc">
+                        加入热水没过食材，放入豆腐、盐、十三香，中火炖8分钟，撒入葱花和鸡精。
+                        <div class="key-info">火候：中火炖煮，汤汁收至原量一半，豆腐完整不碎</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">⭐ 特色亮点</h2>
+            <div class="ratings">
+                <span class="rating-item">🌟 汤汁浓郁</span>
+                <span class="rating-item">💯 豆腐滑嫩</span>
+                <span class="rating-item">🏆 开胃下饭</span>
+                <span class="rating-item">❤️ 暖身养胃</span>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="

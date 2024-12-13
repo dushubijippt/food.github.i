@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭版干煸豆角食谱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background-color: white;
+            max-width: 100%;
+            width: 90%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #FF4E50, #F9D423);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .header-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #FFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+        .header-text {
+            flex-grow: 1;
+        }
+        .title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .section {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: attr(data-icon);
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .cooking-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+        }
+        .info-item {
+            background-color: #fff5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .ingredients {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        .ingredient {
+            background-color: #fff5f5;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .steps {
+            counter-reset: step-counter;
+        }
+        .step {
+            background-color: #fff5f5;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .step:nth-child(2n) {
+            background-color: #fff0f0;
+        }
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .step-title::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            background-color: #FF4E50;
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .step-time {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        .step-description {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        .step-key-info {
+            font-style: italic;
+            color: #666;
+            font-size: 0.8125rem;
+        }
+        .ratings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .rating {
+            background-color: #fff5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #fff5f5;
+        }
+        .slogan {
+            font-style: italic;
+            color: #666;
+            font-size: 0.875rem;
+        }
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="header-image">🌶️</div>
+            <div class="header-text">
+                <h1 class="title">家庭版干煸豆角</h1>
+                <div class="tags">
+                    <span class="tag">干香</span>
+                    <span class="tag">微辣</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title" data-icon="⏱️">烹饪信息</h2>
+            <div class="cooking-info">
+                <span class="info-item">🔪 备料10分钟</span>
+                <span class="info-item">🍳 烹饪25分钟</span>
+                <span class="info-item">🏆 难度中等</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title" data-icon="🥘">食材及调料</h2>
+            <div class="ingredients">
+                <div class="ingredient">🥬 四季豆：300克</div>
+                <div class="ingredient">🥩 猪绞肉：100克</div>
+                <div class="ingredient">🌶️ 干辣椒：5根</div>
+                <div class="ingredient">🌿 花椒：1茶勺</div>
+                <div class="ingredient">🌿 麻椒：1茶勺</div>
+                <div class="ingredient">🧄 蒜：3瓣</div>
+                <div class="ingredient">🧂 白糖：1茶勺</div>
+                <div class="ingredient">🧂 盐：1茶勺</div>
+                <div class="ingredient">🍶 生抽：1汤勺</div>
+                <div class="ingredient">🍶 料酒：1汤勺</div>
+                <div class="ingredient">🧂 鸡精：1/2茶勺</div>
+                <div class="ingredient">🛢️ 油：2汤勺</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title" data-icon="📝">制作步骤</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-title">
+                        处理四季豆
+                        <span class="step-time">⏱️ 10分钟</span>
+                    </div>
+                    <p class="step-description">四季豆去筋洗净控干，切段。热油至7成热，分批下豆角，快速炸至表面起皱。</p>
+                    <p class="step-key-info">火候：中大火，油温180度；手法：快速翻炒，豆角显现虎皮纹路即可出锅，注意不要炸过头</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        炒制香料
+                        <span class="step-time">⏱️ 3分钟</span>
+                    </div>
+                    <p class="step-description">锅中留1汤勺油，爆香花椒、麻椒和干辣椒段。</p>
+                    <p class="step-key-info">火候：小火慢炒；判断：闻到香料香气，辣椒略微变色</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        煸炒肉末
+                        <span class="step-time">⏱️ 5分钟</span>
+                    </div>
+                    <p class="step-description">加入绞肉，中火煸炒至金黄酥脆。</p>
+                    <p class="step-key-info">火候：中火；手法：不断翻炒使肉末均匀受热；判断：肉末呈金黄色，有焦香</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        调味翻炒
+                        <span class="step-time">⏱️ 5分钟</span>
+                    </div>
+                    <p class="step-description">放入炸好的豆角，加入料酒、生抽，快速翻炒。加入盐、糖调味，最后撒入蒜末。</p>
+                    <p class="step-key-info">火候：中大火快炒；手法：大力翻炒使调味料均匀附着；判断：豆角表面略有光泽，入味不过咸</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        最后调味
+                        <span class="step-time">⏱️ 2分钟</span>
+                    </div>
+                    <p class="step-description">最后撒入鸡精，翻炒均匀即可出锅。</p>
+                    <p class="step-key-info">火候：大火收汁；判断：豆角表面有光泽，略带焦香</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title" data-icon="⭐">评价</h2>
+            <div class="ratings">
+                <span class="rating">🌶️ 香辣适中</span>
+                <span class="rating">💪 豆角挺直</span>
+                <span class="rating">🥘 肉香四溢</span>
+                <span class="rating">🔥 下饭神器</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"干香爽脆，回味无穷"</div>
+            <div class="qr-code">二维码</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒜苔炒腊肠</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+        }
+
+        .recipe-card {
+            width: 100%;
+            max-width: 768px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #D17B46, #E89D67);
+            padding: 2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-image {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .info-section {
+            padding: 1.5rem;
+            background: #FBF7F4;
+        }
+
+        .cooking-info {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            font-size: 1rem;
+            flex-wrap: nowrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .ingredients {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #D17B46;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .ingredient-item {
+            background: #FBF7F4;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .steps {
+            padding: 1.5rem;
+            background: #FFFBF8;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .step:nth-child(4n+1) { background: rgba(209, 123, 70, 0.1); }
+        .step:nth-child(4n+2) { background: rgba(232, 157, 103, 0.1); }
+        .step:nth-child(4n+3) { background: rgba(245, 176, 128, 0.1); }
+        .step:nth-child(4n+4) { background: rgba(251, 247, 244, 0.4); }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .step-time {
+            font-size: 0.875rem;
+            color: #D17B46;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: rgba(209, 123, 70, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        .ratings {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .rating-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .rating-item {
+            background: #FBF7F4;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer {
+            padding: 1.5rem;
+            background: #FBF7F4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slogan {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #D17B46;
+        }
+
+        @media (max-width: 640px) {
+            .cooking-info {
+                flex-wrap: wrap;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tags {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <header class="header">
+            <div class="header-image">🥘</div>
+            <div class="header-text">
+                <h1>蒜苔炒腊肠</h1>
+                <div class="tags">
+                    <span class="tag">粤式</span>
+                    <span class="tag">小炒</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="info-section">
+            <div class="cooking-info">
+                <div class="info-item">⏱️ 备料：10分钟</div>
+                <div class="info-item">🔥 烹饪：8分钟</div>
+                <div class="info-item">⭐ 难度：入门</div>
+            </div>
+        </section>
+
+        <section class="ingredients">
+            <h2 class="section-title">🥘 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🥬 蒜苔：200克</div>
+                <div class="ingredient-item">🥓 广式腊肠：4根</div>
+                <div class="ingredient-item">🧄 蒜瓣：3瓣</div>
+                <div class="ingredient-item">🌶️ 小米椒：2个</div>
+                <div class="ingredient-item">💧 开水：3汤勺</div>
+                <div class="ingredient-item">🥫 蚝油：1茶勺</div>
+                <div class="ingredient-item">🧂 盐：1/4茶勺</div>
+            </div>
+        </section>
+
+        <section class="steps">
+            <h2 class="section-title">👨‍🍳 制作步骤</h2>
+            <div class="step">
+                <div class="step-header">
+                    1. 腊肠预处理<span class="step-time">⏱️ 10分钟</span>
+                </div>
+                <div class="step-description">
+                    将腊肠放入沸水中汆烫1分钟，取出冲凉。撕去肠衣后切斜片，放入蒸锅大火蒸8分钟。
+                    <div class="key-info">蒸煮后的腊肠口感更佳，去肠衣可使味道更好地融入</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    2. 食材准备<span class="step-time">⏱️ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    蒜苔切段，蒜瓣拍碎，小米椒切圈。锅中烧开水，蒜苔焯水1分钟后捞出沥干。
+                    <div class="key-info">蒜苔切4厘米长段；焯水后立即沥干防止变软</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    3. 爆香配料<span class="step-time">⏱️ 1分钟</span>
+                </div>
+                <div class="step-description">
+                    锅中倒油烧热，先爆香蒜末和辣椒，注意火候控制避免焦糊。
+                    <div class="key-info">火候：六分热油，中火爆香；闻到香味即可</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    4. 炒制腊肠<span class="step-time">⏱️ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    放入腊肠片，中小火慢炒，待腊肠边缘微卷出油时加入蒜苔。
+                    <div class="key-info">火候：中小火，让腊肠慢慢释放香味和油脂</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    5. 调味收汁<span class="step-time">⏱️ 2分钟</span>
+                </div>
+                <div class="step-description">
+                    大火快炒蒜苔至微皱，加入蚝油和盐调味，最后加入开水翻炒收汁。
+                    <div class="key-info">火候：大火快炒；判断：蒜苔色泽翠绿，稍微起皱即可出锅</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ratings">
+            <h2 class="section-title">⭐ 特色</h2>
+            <div class="rating-items">
+                <div class="rating-item">🌟 腊味醇厚</div>
+                <div class="rating-item">🥬 爽脆可口</div>
+                <div class="rating-item">🍚 米饭绝配</div>
+                <div class="rating-item">⏱️ 快手省事</div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="slogan">"腊香蒜苔，粤式经典的家常美味"</div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            padding: 1rem;
+        }
+        
+        .recipe-card {
+            width: 100%;
+            max-width: 768px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+        }
+        
+        .title-section h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .info-section {
+            background: #f0f9ff;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem;
+            border-radius: 0.5rem;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .ingredients {
+            padding: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0369a1;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .ingredient-item {
+            background: #f0f9ff;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .steps {
+            padding: 1.5rem;
+        }
+        
+        .step {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .step:nth-child(4n+1) { background: #f0f9ff; }
+        .step:nth-child(4n+2) { background: #f0fdf4; }
+        .step:nth-child(4n+3) { background: #fdf4ff; }
+        .step:nth-child(4n+4) { background: #fff7ed; }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .step-key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+        
+        .ratings {
+            padding: 1.5rem;
+        }
+        
+        .rating-items {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .rating-item {
+            background: #f0f9ff;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            background: #f8fafc;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .slogan {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #0369a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🐟</div>
+            <div class="title-section">
+                <h1>清蒸鲈鱼</h1>
+                <div class="tags">
+                    <span class="tag">鲜美</span>
+                    <span class="tag">低脂</span>
+                    <span class="tag">高蛋白</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-item">⏱️ 备料5分钟</div>
+            <div class="info-item">🍳 蒸制7分钟</div>
+            <div class="info-item">📊 新手可做</div>
+        </div>
+
+        <div class="ingredients">
+            <h2 class="section-title">🥘 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">
+                    <span>🐟 鲈鱼</span>
+                    <span>1条（1.5斤）</span>
+                </div>
+                <div class="ingredient-item">
+                    <span>🧂 盐</span>
+                    <span>1茶勺</span>
+                </div>
+                <div class="ingredient-item">
+                    <span>🧄 姜</span>
+                    <span>6片</span>
+                </div>
+                <div class="ingredient-item">
+                    <span>🌿 葱花</span>
+                    <span>2根</span>
+                </div>
+                <div class="ingredient-item">
+                    <span>🌶️ 红小米椒</span>
+                    <span>1根</span>
+                </div>
+                <div class="ingredient-item">
+                    <span>🫗 蒸鱼豉油</span>
+                    <span>3汤勺</span>
+                </div>
+                <div class="ingredient-item">
+                    <span>🫗 食用油</span>
+                    <span>2汤勺</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <h2 class="section-title">📝 制作步骤</h2>
+            
+            <div class="step">
+                <div class="step-header">
+                    <span>1. 鱼处理</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    鱼洗净，从头部切一刀，沿着中间鱼骨两边片开，但不切断。剪掉腹部，去除内脏。
+                    <div class="step-key-info">
+                        手法要点：刀口均匀，深度适中，片开时不要切断鱼骨，保持完整
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>2. 去腥</span>
+                    <span>⏱️ 1分钟</span>
+                </div>
+                <div class="step-content">
+                    以1茶勺盐均匀涂抹鱼表皮，停留10秒后用流水冲洗干净。
+                    <div class="step-key-info">
+                        关键点：盐要均匀涂抹，确保每个部位都能去腥
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>3. 准备蒸制</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    盘底铺3片姜片和1根葱花（切段），放入两根筷子架空，将鱼放上。
+                    <div class="step-key-info">
+                        摆放要点：筷子间距要合适，确保鱼身能稳固架空
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>4. 切配料</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    将剩余姜片切丝，葱切细丝，小米椒切圈备用。葱丝过水保持挺立。
+                    <div class="step-key-info">
+                        切丝技巧：葱姜要切细丝，保持长度一致，更加美观
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>5. 蒸鱼</span>
+                    <span>⏱️ 7分钟</span>
+                </div>
+                <div class="step-content">
+                    锅中水烧开，放入鱼盘大火蒸7分钟。蒸好后取出倒掉蒸出的汤汁。
+                    <div class="step-key-info">
+                        火候控制：大火快蒸，时间要准，超时会导致鱼肉发柴
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>6. 最终调味</span>
+                    <span>⏱️ 1分钟</span>
+                </div>
+                <div class="step-content">
+                    换干净盘子，淋入3汤勺蒸鱼豉油，撒上葱姜丝和辣椒圈，最后浇入2汤勺滚烫食用油。
+                    <div class="step-key-info">
+                        浇油要点：油温要足够热（冒烟），听到滋滋声才能激发香味
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ratings">
+            <h2 class="section-title">⭐ 特色亮点</h2>
+            <div class="rating-items">
+                <div class="rating-item">
+                    <span>✨ 鲜嫩多汁</span>
+                </div>
+                <div class="rating-item">
+                    <span>⚡ 快速上手</span>
+                </div>
+                <div class="rating-item">
+                    <span>🍽️ 营养健康</span>
+                </div>
+                <div class="rating-item">
+                    <span>🌟 色香味俱全</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"十分钟鲜嫩清蒸鱼，新手也能做得好"</div>
+        </div>
+    </div>
+</body>
+</html>

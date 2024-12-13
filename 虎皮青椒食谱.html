@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虎皮青椒食谱</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            max-width: 768px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: white;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .title-section {
+            flex: 1;
+        }
+
+        .recipe-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .cooking-info {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ingredients {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ingredient-item {
+            background: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .unit-note {
+            color: #888;
+            font-size: 0.875rem;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.05);
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .steps {
+            padding: 1.5rem;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: #888;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.05);
+            border-radius: 0.5rem;
+        }
+
+        .ratings {
+            padding: 1.5rem;
+            background: #f8f9fa;
+        }
+
+        .rating-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .rating-pill {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slogan {
+            font-style: italic;
+            color: #666;
+            font-size: 1.125rem;
+        }
+
+        @media (max-width: 480px) {
+            .cooking-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🫑</div>
+            <div class="title-section">
+                <div class="recipe-name">虎皮青椒</div>
+                <div class="tags">
+                    <span class="tag">咸鲜</span>
+                    <span class="tag">快手</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cooking-info">
+            <div class="info-item">⏲️ 准备：5分钟</div>
+            <div class="info-item">🔥 烹饪：10分钟</div>
+            <div class="info-item">💪 难度：简单</div>
+        </div>
+
+        <div class="ingredients">
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🫑 青椒 5个</div>
+                <div class="ingredient-item">🧄 蒜末 2瓣</div>
+                <div class="ingredient-item">🫗 生抽 2汤勺</div>
+                <div class="ingredient-item">🫗 老抽 1茶勺</div>
+                <div class="ingredient-item">🫗 陈醋 1汤勺</div>
+                <div class="ingredient-item">🧂 白糖 1茶勺</div>
+                <div class="ingredient-item">🥄 淀粉 1茶勺</div>
+                <div class="ingredient-item">🫗 蚝油 1汤勺</div>
+                <div class="ingredient-item">🫗 清水 2汤勺</div>
+                <div class="ingredient-item">🫗 食用油 3汤勺</div>
+            </div>
+            <div class="unit-note">注：1汤勺≈15ml，1茶勺≈5ml</div>
+        </div>
+
+        <div class="steps">
+            <div class="section-title">📝 制作步骤</div>
+            
+            <div class="step" style="background: #e3f2fd;">
+                <div class="step-header">
+                    <span>1. 调制酱汁</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-description">
+                    在小碗中依次加入：生抽2汤勺、老抽1茶勺、陈醋1汤勺、白糖1茶勺、淀粉1茶勺、清水2汤勺，可选加入蚝油1汤勺增香。
+                    <div class="key-info">关键：用筷子充分搅拌，直至淀粉完全溶解，酱汁呈均匀的深褐色，没有颗粒沉淀</div>
+                </div>
+            </div>
+
+            <div class="step" style="background: #f3e5f5;">
+                <div class="step-header">
+                    <span>2. 食材处理</span>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    将5个青椒洗净，去蒂去籽，切成约4厘米长的菱形块。2瓣大蒜剥皮后切成细末。
+                    <div class="key-info">切青椒技巧：斜刀切制，可增加表面积，更容易入味且造型美观</div>
+                </div>
+            </div>
+
+            <div class="step" style="background: #e8f5e9;">
+                <div class="step-header">
+                    <span>3. 煎制青椒</span>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    电炒锅中倒入3汤勺食用油，中大火加热至七成热。放入青椒块，单面煎制约45秒。
+                    <div class="key-info">火候：中大火快速煎制，待青椒表面起皱、略显焦黄，呈现虎皮纹路时翻面，此时青椒仍保持翠绿挺括</div>
+                </div>
+            </div>
+
+            <div class="step" style="background: #fff3e0;">
+                <div class="step-header">
+                    <span>4. 调味收汁</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-description">
+                    将蒜末放入锅中爆香，倒入调好的酱汁，转中小火快速翻炒均匀。
+                    <div class="key-info">火候：中小火收汁，约30秒，汤汁略微粘稠即可出锅，不要收得太干以保持青椒水润质地</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ratings">
+            <div class="section-title">⭐ 评价</div>
+            <div class="rating-pills">
+                <div class="rating-pill">🔥 超级下饭</div>
+                <div class="rating-pill">⚡ 快手易做</div>
+                <div class="rating-pill">💪 营养美味</div>
+                <div class="rating-pill">🌟 家常必备</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"香脆青椒裹虎皮，咸鲜开胃好滋味"</div>
+        </div>
+    </div>
+</body>
+</html>

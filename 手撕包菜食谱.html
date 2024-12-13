@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 0 1rem;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 42rem;
+            margin: 1.5rem auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ee4d2d, #ff7875);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @supports not (gap: 1rem) {
+            .header > * + * {
+                margin-left: 1rem;
+            }
+        }
+
+        .icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .title {
+            color: white !important;
+            -webkit-text-fill-color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            color: white !important;
+            -webkit-text-fill-color: white;
+            font-size: 0.875rem;
+        }
+
+        .content {
+            padding: 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+        }
+
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .ingredient {
+            background: #fff1f0;
+            color: #cf1322;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .step {
+            background: #fff1f0;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step:nth-child(4n+2) { background: #fff2e8; }
+        .step:nth-child(4n+3) { background: #fff7e6; }
+        .step:nth-child(4n+4) { background: #fffbe6; }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title {
+            font-weight: bold;
+        }
+
+        .step-time {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .step-content {
+            color: #333;
+        }
+
+        .key-info {
+            font-style: italic;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid rgba(0, 0, 0, 0.1);
+            color: #666;
+        }
+
+        .review-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .review-tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        @media screen and (max-width: 640px) {
+            .container {
+                margin: 0.75rem auto;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ingredient-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .step {
+                padding: 0.75rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                margin: 0;
+            }
+
+            .tag {
+                border: 1px solid #ccc;
+                color: #333 !important;
+                -webkit-text-fill-color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="icon">🥬</div>
+            <div>
+                <h1 class="title">手撕包菜</h1>
+                <div class="tags">
+                    <span class="tag">微辣</span>
+                    <span class="tag">咸鲜</span>
+                    <span class="tag">爽脆</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="section">
+                <div class="info-grid">
+                    <div class="info-item">⏱️ 准备：15分钟</div>
+                    <div class="info-item">🔥 烹饪：10分钟</div>
+                    <div class="info-item">⭐ 难度：简单</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">🥘 食材及调料</h2>
+                <div class="ingredient-grid">
+                    <div class="ingredient">🥬 包菜 1个</div>
+                    <div class="ingredient">🥓 五花肉 50g</div>
+                    <div class="ingredient">🌶️ 干辣椒 4个</div>
+                    <div class="ingredient">🧅 葱白 6-8根</div>
+                    <div class="ingredient">🧄 蒜 3瓣</div>
+                    <div class="ingredient">🧂 盐 1茶勺</div>
+                    <div class="ingredient">🍶 料酒 3汤勺</div>
+                    <div class="ingredient">🥫 生抽 1汤勺</div>
+                    <div class="ingredient">🥫 蒸鱼豉油 2茶勺</div>
+                    <div class="ingredient">🥫 耗油 2茶勺</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">📝 制作步骤</h2>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">1. 准备食材</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <div class="step-content">
+                        <p>选择表面光滑、较重的包菜，确保水分充足。五花肉切成薄片。</p>
+                        <p class="key-info">选择技巧：拿起来较重的包菜水分足，炒起来口感爽脆；五花肉最好选择肥瘦均匀的</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">2. 处理包菜</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <div class="step-content">
+                        <p>从包菜底部切开，一片片掰下来撕成大小适中的块。去掉包菜芯部分。</p>
+                        <p class="key-info">注意：不要撕得太小，约4厘米见方大小最佳，保持口感</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">3. 准备配料</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <div class="step-content">
+                        <p>葱白切段，姜切丝，蒜切片，干辣椒切段。</p>
+                        <p class="key-info">切法：葱白切4厘米长段，姜丝要细，蒜片要薄，干辣椒斜切成1厘米长小段</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">4. 热锅煎炒五花肉</div>
+                        <div class="step-time">⏱️ 3分钟</div>
+                    </div>
+                    <div class="step-content">
+                        <p>大火热锅，无需加油，将五花肉煎炒至微焦出油。</p>
+                        <p class="key-info">火候：大火，煎至肉片金黄微焦，油脂充分释放，这是决定菜品味道的关键</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">5. 爆香配料</div>
+                        <div class="step-time">⏱️ 30秒</div>
+                    </div>
+                    <div class="step-content">
+                        <p>加入葱白、姜丝、蒜片、干辣椒快速翻炒。</p>
+                        <p class="key-info">火候：保持大火，快速翻炒至香气四溢，注意不要炒糊</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">6. 炒制包菜</div>
+                        <div class="step-time">⏱️ 2分钟</div>
+                    </div>
+                    <div class="step-content">
+                        <p>将包菜倒入锅中，大火快速翻炒。沿锅边加入料酒提香。</p>
+                        <p class="key-info">技巧：大火快炒保持包菜脆嫩，料酒要沿锅边淋入，让酒香充分发挥</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">7. 调味收汁</div>
+                        <div class="step-time">⏱️ 1分钟</div>
+                    </div>
+                    <div class="step-content">
+                        <p>依次加入盐、生抽、蒸鱼豉油、耗油，快速翻炒均匀。</p>
+                        <p class="key-info">火候：保持大火，确保调味料裹匀，包菜微微变色但保持脆嫩质地时即可出锅</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">💭 特色评价</h2>
+                <div class="review-grid">
+                    <div class="review-tag">🔥 热炒爽口</div>
+                    <div class="review-tag">👨‍🍳 层次丰富</div>
+                    <div class="review-tag">🍚 开胃下饭</div>
+                    <div class="review-tag">💪 营养美味</div>
+                </div>
+            </section>
+
+            <div class="footer">
+                "经典湘味，一口香脆，回味无穷"
+            </div>
+        </main>
+    </div>
+</body>
+</html>

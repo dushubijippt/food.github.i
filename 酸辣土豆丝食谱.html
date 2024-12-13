@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>酸辣土豆丝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+        }
+        
+        .recipe-card {
+            width: 100%;
+            max-width: 768px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: white;
+        }
+        
+        .avatar {
+            width: min(80px, 20vw);
+            height: min(80px, 20vw);
+            aspect-ratio: 1;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: min(2.5rem, 6vw);
+            flex-shrink: 0;
+        }
+        
+        .title-section {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        
+        .title-section h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+        
+        .tags::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        
+        .info-section {
+            background: #fff7ed;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-around;
+            font-size: 1rem;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ingredients {
+            padding: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .ingredient-item {
+            background: #fff7ed;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .steps {
+            padding: 1.5rem;
+        }
+        
+        .step {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .step:nth-child(4n+1) { background: #fff7ed; }
+        .step:nth-child(4n+2) { background: #fef2f2; }
+        .step:nth-child(4n+3) { background: #fffbeb; }
+        .step:nth-child(4n+4) { background: #fff7ed; }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+        
+        .step-time {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        .step-desc {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 0.875rem;
+        }
+        
+        .ratings {
+            padding: 1.5rem;
+            background: #fff7ed;
+        }
+        
+        .rating-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .rating-item {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fffbeb;
+        }
+        
+        .slogan {
+            font-style: italic;
+            color: #4b5563;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🥔</div>
+            <div class="title-section">
+                <h1>酸辣土豆丝</h1>
+                <div class="tags">
+                    <span class="tag">酸辣开胃</span>
+                    <span class="tag">爽脆可口</span>
+                    <span class="tag">快手下饭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-item">⏱️ 备料5分钟</div>
+            <div class="info-item">🔥 炒制2分钟</div>
+            <div class="info-item">⭐ 新手易上手</div>
+        </div>
+
+        <div class="ingredients">
+            <h2 class="section-title">🥘 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🥔 土豆 1个(约250g)</div>
+                <div class="ingredient-item">🌶️ 干辣椒 5个</div>
+                <div class="ingredient-item">🫑 青椒 1个</div>
+                <div class="ingredient-item">🧄 蒜末 2瓣</div>
+                <div class="ingredient-item">🧂 白醋 2汤勺</div>
+                <div class="ingredient-item">🫙 生抽 2汤勺</div>
+                <div class="ingredient-item">🧂 盐 1茶勺</div>
+                <div class="ingredient-item">🫙 食用油 2汤勺</div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <h2 class="section-title">📝 制作步骤</h2>
+            
+            <div class="step">
+                <div class="step-header">
+                    1. 预处理土豆
+                    <span class="step-time">⏱️ 3分钟</span>
+                </div>
+                <div class="step-desc">选用白心土豆，擦成均匀细丝，冷水浸泡漂洗去除淀粉</div>
+                <div class="step-key-info">关键：使用方形擦丝器小号孔径，土豆丝要均匀，5分钟内完成泡洗</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    2. 准备配料
+                    <span class="step-time">⏱️ 2分钟</span>
+                </div>
+                <div class="step-desc">干辣椒斜切段，青椒切丝，蒜切末</div>
+                <div class="step-key-info">技巧：干辣椒切成0.5cm小段，青椒丝要与土豆丝长度相近</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    3. 热锅爆香
+                    <span class="step-time">⏱️ 30秒</span>
+                </div>
+                <div class="step-desc">大火热锅，倒油，爆香干辣椒和蒜末</div>
+                <div class="step-key-info">火候：大火，油温6成热，辣椒爆至微卷即可</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    4. 快速翻炒
+                    <span class="step-time">⏱️ 1分钟</span>
+                </div>
+                <div class="step-desc">沥干土豆丝，加入锅中快速翻炒，加入调料，最后加青椒</div>
+                <div class="step-key-info">要点：大火快炒，土豆丝变色透明即可出锅，保持脆嫩</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    5. 调味出锅
+                    <span class="step-time">⏱️ 30秒</span>
+                </div>
+                <div class="step-desc">依次加入白醋、生抽、盐，快速翻炒均匀即可出锅</div>
+                <div class="step-key-info">技巧：调料要沿锅边淋入，保持大火，保持土豆丝脆爽</div>
+            </div>
+        </div>
+
+        <div class="ratings">
+            <h2 class="section-title">⭐ 特色亮点</h2>
+            <div class="rating-items">
+                <div class="rating-item">🔥 火候快准狠</div>
+                <div class="rating-item">⚡ 酸辣开胃</div>
+                <div class="rating-item">🥢 爽脆可口</div>
+                <div class="rating-item">💪 新手易上手</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"大火快炒一分钟，酸辣爽口好味道"</div>
+        </div>
+    </div>
+</body>
+</html>

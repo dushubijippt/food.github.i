@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--system-font);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            padding: 16px;
+            max-width: 768px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+        
+        .recipe-card {
+            background: linear-gradient(135deg, #FCA5A5 0%, #EF4444 100%);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: visible;
+            margin: 24px 0;
+            position: relative;
+            padding-top: 140px;
+        }
+        
+        .recipe-header {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            right: 32px;
+            color: white;
+            z-index: 10;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .recipe-content {
+            background: white;
+            border-radius: 24px 24px 0 0;
+            padding: 24px;
+            position: relative;
+        }
+
+        .avatar-container {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .avatar-container span {
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        .title-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .title-text {
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            color: white;
+            line-height: 1.2;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .tag:active {
+            transform: translateY(0);
+        }
+        
+        .cooking-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            background-color: #FEF2F2;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 24px 0;
+        }
+
+        .cooking-info-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cooking-info-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .cooking-info-text {
+            font-size: 14px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title span {
+            font-size: 24px;
+            line-height: 1;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 8px;
+        }
+        
+        .ingredient-tag {
+            background-color: #FEF2F2;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ingredient-tag span {
+            font-size: 16px;
+            line-height: 1;
+        }
+        
+        .step-card {
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        
+        .step-card:nth-child(4n+1) { background-color: #FEF2F2; }
+        .step-card:nth-child(4n+2) { background-color: #FFF1F2; }
+        .step-card:nth-child(4n+3) { background-color: #FFE4E6; }
+        .step-card:nth-child(4n+4) { background-color: #FECDD3; }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .step-time {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .step-content {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .step-key {
+            margin-top: 8px;
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .evaluation-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .evaluation-tag {
+            background-color: #FEF2F2;
+            border-radius: 9999px;
+            padding: 8px 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .evaluation-tag span {
+            font-size: 16px;
+            line-height: 1;
+        }
+        
+        .recipe-footer {
+            margin-top: 24px;
+            background-color: #F9FAFB;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .recipe-slogan {
+            font-size: 16px;
+            font-weight: 700;
+            font-style: italic;
+            color: #374151;
+        }
+
+        .qr-code {
+            width: 64px;
+            height: 64px;
+            background-color: #E5E7EB;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .recipe-header {
+                left: 16px;
+                right: 16px;
+                gap: 16px;
+            }
+
+            .recipe-content {
+                padding: 16px;
+            }
+
+            .title-text {
+                font-size: 24px;
+            }
+
+            .cooking-info {
+                gap: 12px;
+                padding: 12px;
+            }
+
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="recipe-header">
+            <div class="avatar-container">
+                <span>🐟</span>
+            </div>
+            <div class="title-container">
+                <div class="title-text">家常红烧鱼</div>
+                <div class="tag-container">
+                    <span class="tag">咸鲜</span>
+                    <span class="tag">红烧</span>
+                    <span class="tag">下饭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-content">
+            <div class="cooking-info">
+                <div class="cooking-info-item">
+                    <span class="cooking-info-icon">⏲️</span>
+                    <span class="cooking-info-text">准备 15分钟</span>
+                </div>
+                <div class="cooking-info-item">
+                    <span class="cooking-info-icon">🍳</span>
+                    <span class="cooking-info-text">烹饪 30分钟</span>
+                </div>
+                <div class="cooking-info-item">
+                    <span class="cooking-info-icon">⭐</span>
+                    <span class="cooking-info-text">难度适中</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span>🥘</span>食材及调料
+                </div>
+                <div class="ingredients-grid">
+                    <div class="ingredient-tag"><span>🐟</span>鲜活鲑鱼 1条</div>
+                    <div class="ingredient-tag"><span>🧄</span>大蒜 6瓣</div>
+                    <div class="ingredient-tag"><span>🌿</span>大葱 3根</div>
+                    <div class="ingredient-tag"><span>🥔</span>生姜 3片</div>
+                    <div class="ingredient-tag"><span>🌶️</span>花椒 1茶勺</div>
+                    <div class="ingredient-tag"><span>🌶️</span>红尖椒 2个</div>
+                    <div class="ingredient-tag"><span>🌿</span>香菜 1把</div>
+                    <div class="ingredient-tag"><span>🧂</span>生抽 2汤勺</div>
+                    <div class="ingredient-tag"><span>🍶</span>料酒 1汤勺</div>
+                    <div class="ingredient-tag"><span>🧂</span>盐 1茶勺</div>
+                    <div class="ingredient-tag"><span>🍯</span>白糖 1茶勺</div>
+                </div>
+            </div>
+
+            <div class="section" style="margin-top: 24px;">
+                <div class="section-title">
+                    <span>📝</span>制作步骤
+                </div>
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-title">1. 鱼品预处理</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <div class="step-content">将鲜活鲑鱼清洗干净，擦干表面水分，以备煎制</div>
+                    <div class="step-key">关键：鱼表面一定要擦干，这样更容易煎出金黄色泽</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-title">2. 配料切制</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <div class="step-content">大蒜拍碎，大葱切段，生姜切片，红尖椒切圈，香菜切段</div>
+                    <div class="step-key">关键：切好的配料分类摆放，便于后续烹饪</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-title">3. 煎制鱼身</div>
+                        <div class="step-time">⏱️ 8分钟</div>
+                    </div>
+                    <div class="step-content">锅中倒入食用油烧至六成热，撒入少许盐，将鱼放入，中火煎至两面金黄，盛出备用</div>
+                    <div class="step-key">关键：每面约4分钟，煎至表皮金黄酥脆即可</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-title">4. 爆香调味</div>
+                        <div class="step-time">⏱️ 3分钟</div>
+                    </div>
+                    <div class="step-content">锅中留油，放入蒜瓣、葱段、姜片、花椒、红尖椒圈小火炒香，加入生抽、料酒调味</div>
+                    <div class="step-key">关键：小火慢炒，让香味充分释放</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-title">5. 红烧火候</div>
+                        <div class="step-time">⏱️ 20分钟</div>
+                    </div>
+                    <div class="step-content">放入煎好的鱼，加入半碗热水，加入盐和白糖调味</div>
+                    <div class="step-key">关键：大火煮沸后转小火慢炖，让鱼肉更入味</div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-title">6. 收汁装盘</div>
+                        <div class="step-time">⏱️ 3分钟</div>
+                    </div>
+                    <div class="step-content

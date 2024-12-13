@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 16px;
+            background: #FFF8E7;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recipe-card {
+            background: white;
+            max-width: 768px;
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 16px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .cooking-info {
+            background: #FFF8E7;
+            padding: 16px 24px;
+            display: flex;
+            gap: 32px;
+            font-size: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .ingredients {
+            padding: 24px;
+            background: #FFFFFF;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #D35400;
+        }
+
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .ingredient-item {
+            background: #FFF8E7;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .steps {
+            padding: 24px;
+        }
+
+        .step {
+            margin-bottom: 24px;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .step:nth-child(4n+1) { background: #FFF8E7; }
+        .step:nth-child(4n+2) { background: #FFE4B5; }
+        .step:nth-child(4n+3) { background: #FFDAB9; }
+        .step:nth-child(4n+4) { background: #FFE4C4; }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #D35400;
+        }
+
+        .step-description {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .step-key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+
+        .ratings {
+            padding: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .rating {
+            background: #FFF8E7;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .footer {
+            background: #FFF8E7;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slogan {
+            font-size: 16px;
+            font-style: italic;
+            color: #D35400;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="header-image">🎃</div>
+            <div class="header-content">
+                <h1>南瓜小米粥</h1>
+                <div class="tags">
+                    <span class="tag">滋补</span>
+                    <span class="tag">甜糯</span>
+                    <span class="tag">养胃</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cooking-info">
+            <div class="info-item">⏱️ 泡制12h</div>
+            <div class="info-item">🔥 烹饪40m</div>
+            <div class="info-item">📊 新手</div>
+        </div>
+
+        <div class="ingredients">
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredient-grid">
+                <div class="ingredient-item">🌾 小米：100g</div>
+                <div class="ingredient-item">🎃 南瓜：500g</div>
+                <div class="ingredient-item">💧 清水：1500ml</div>
+                <div class="ingredient-item">🧂 盐：1茶勺</div>
+                <div class="ingredient-item">🍯 蜂蜜：1汤勺</div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="section-title">📝 制作步骤</div>
+            
+            <div class="step">
+                <div class="step-header">
+                    <span>1. 食材准备</span>
+                    <span>⏱️ 12小时</span>
+                </div>
+                <div class="step-description">小米淘洗干净，加入1000ml清水浸泡。南瓜去皮切成2cm小块。</div>
+                <div class="step-key-info">小米要充分浸泡，水量要没过小米2cm以上，南瓜块大小要均匀</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>2. 蒸制南瓜</span>
+                    <span>⏱️ 10分钟</span>
+                </div>
+                <div class="step-description">大火将南瓜块蒸至软烂，需要收集蒸出的南瓜水。</div>
+                <div class="step-key-info">用筷子能轻松穿透即可，注意收集南瓜水，这是精华所在</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>3. 熬制小米</span>
+                    <span>⏱️ 20分钟</span>
+                </div>
+                <div class="step-description">浸泡后的小米加入500ml清水，用陶瓷煲小火慢熬至浓稠。</div>
+                <div class="step-key-info">火候要保持小火，小米粒完全软化，搅拌时有粘稠感即可</div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span>4. 混合调味</span>
+                    <span>⏱️ 10分钟</span>
+                </div>
+                <div class="step-description">将南瓜压成泥，加入南瓜水和小米粥中，加入1茶勺盐调味，最后淋入1汤勺蜂蜜。</div>
+                <div class="step-key-info">南瓜泥要压得细腻无颗粒，充分搅拌均匀，用余热焖5分钟</div>
+            </div>
+        </div>
+
+        <div class="ratings">
+            <div class="rating">💝 养胃暖心</div>
+            <div class="rating">👶 适合全家</div>
+            <div class="rating">🥄 香甜绵密</div>
+            <div class="rating">💪 营养均衡</div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"让挑食的孩子爱上这碗暖心南瓜粥"</div>
+        </div>
+    </div>
+</body>
+</html>

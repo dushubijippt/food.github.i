@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f5;
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 16px;
+            line-height: 1.5;
+        }
+
+        .recipe-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #98FB98 0%, #E0FFFF 100%);
+            border-radius: 16px 16px 0 0;
+            padding: 24px;
+        }
+
+        .title-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 40px;
+        }
+
+        .tags {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .info-row {
+            background: #f8f9fa;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            text-align: center;
+        }
+
+        .section {
+            padding: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .ingredients {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .ingredient {
+            background: #f0f9f0;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .step {
+            background: #f0f9f0;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .step:nth-child(2n) {
+            background: #e3f2fd;
+        }
+
+        .step-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            margin-bottom: 8px;
+        }
+
+        .step-tip {
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            padding: 24px;
+            background: #f8f9fa;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 24px;
+            border-top: 1px solid #eee;
+        }
+
+        .qr {
+            width: 64px;
+            height: 64px;
+            background: #eee;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .title-row {
+                gap: 12px;
+            }
+
+            .avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 32px;
+            }
+
+            .tags {
+                grid-template-columns: repeat(auto-fit, minmax(80px, auto));
+            }
+
+            .info-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ingredients {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <header class="header">
+            <div class="title-row">
+                <div class="avatar">🥒</div>
+                <div>
+                    <h1>凉拌拍黄瓜</h1>
+                    <div class="tags">
+                        <span class="tag">🌶️ 爽口开胃</span>
+                        <span class="tag">❄️ 夏日凉菜</span>
+                        <span class="tag">⚡ 10分钟</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="info-row">
+            <div>⏱️ 备料3分钟</div>
+            <div>🔥 制作7分钟</div>
+            <div>📊 新手可做</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">🥗 食材及调料</h2>
+            <div class="ingredients">
+                <div class="ingredient">🥒 新鲜黄瓜 1根</div>
+                <div class="ingredient">🧄 蒜 4瓣</div>
+                <div class="ingredient">🌿 香菜 2根</div>
+                <div class="ingredient">🥜 花生米 2汤勺</div>
+                <div class="ingredient">🌶️ 小米辣 1个</div>
+                <div class="ingredient">🌰 熟芝麻 1汤勺</div>
+                <div class="ingredient">🧂 盐 1茶勺</div>
+                <div class="ingredient">🫗 生抽 2汤勺</div>
+                <div class="ingredient">🦪 蚝油 1汤勺</div>
+                <div class="ingredient">🍶 陈醋 2汤勺</div>
+                <div class="ingredient">🧂 白糖 1/2茶勺</div>
+                <div class="ingredient">🫗 香油 1茶勺</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 制作步骤</h2>
+            <div class="step">
+                <div class="step-header">
+                    <h3>1. 预处理食材</h3>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <p>黄瓜洗净冷藏10分钟，蒜瓣拍碎切末，小米辣切碎，香菜切段</p>
+                <p class="step-tip">💡 冷藏的黄瓜口感更加爽脆，蒜末要细腻均匀</p>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <h3>2. 处理黄瓜</h3>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <p>把黄瓜放在菜板上，用刀背横向拍裂，斜切成菱形段</p>
+                <p class="step-tip">💡 力度要适中，使黄瓜裂开但不散碎，切段约2cm长</p>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <h3>3. 调制万能酱汁</h3>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <p>碗中依次加入蒜末、小米辣、熟芝麻，浇入2汤勺热油，加入生抽、蚝油、盐、陈醋、糖、香油</p>
+                <p class="step-tip">💡 热油温度需冒烟（约170℃），浇在调料上激发香气。调料按顺序加入，最后尝味调整</p>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <h3>4. 最终调味</h3>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <p>将黄瓜段放入调味碗中，加入香菜段和花生米，充分拌匀</p>
+                <p class="step-tip">💡 拌匀后室温静置2分钟入味，夏天可放冰箱冷藏5分钟再食用</p>
+            </div>
+        </section>
+
+        <div class="tips">
+            <span class="tag">🌟 超开胃</span>
+            <span class="tag">💪 新手友好</span>
+            <span class="tag">🔄 万能调味汁</span>
+            <span class="tag">✨ 夏日必备</span>
+        </div>
+
+        <footer class="footer">
+            <p>爽脆开胃的夏日凉菜担当</p>
+            <div class="qr">📱</div>
+        </footer>
+    </div>
+</body>
+</html>

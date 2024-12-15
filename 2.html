@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地三鲜食谱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            max-width: 768px;/* 或者更大的百分比 */
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2f855a, #38a169);
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .dish-image {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border-radius: 50%;/*保持圆形*/
+            aspect-ratio: 1/1;  /* 添加这行确保宽高比永远是1:1 */
+        }
+
+        .dish-info h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            min-width: 0; /* 允许子元素收缩 */
+            flex: 1; /* 允许占据剩余空间 */
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            /* 修改以下属性 */
+            overflow-x: auto; /* 允许水平滚动 */
+            white-space: nowrap; /* 防止文本换行 */
+            width: 100%; /* 确保占满容器宽度 */
+            flex-wrap: nowrap; /* 禁止换行 */
+            -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
+            scrollbar-width: none; /* Firefox隐藏滚动条 */
+            -ms-overflow-style: none; /* IE和Edge隐藏滚动条 */
+            padding-bottom: 5px; /* 底部留出间距 */
+}
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .cooking-info {
+            background: #f0fdf4;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            /* 移除 flex-wrap: wrap */
+            gap: 1rem;
+            font-size: 1rem;
+            /* 添加以下属性 */
+            overflow-x: auto; /* 允许横向滚动 */
+            white-space: nowrap; /* 防止文字换行 */
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+            scrollbar-width: none; /* 隐藏滚动条 */
+            -ms-overflow-style: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2f855a;
+        }
+
+        .ingredients {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2f855a;
+        }
+
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .ingredient-item {
+            background: #f0fdf4;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            color: #2f855a;
+        }
+
+        .steps {
+            padding: 1.5rem;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step:nth-child(4n+1) { background: #f0fdf4; }
+        .step:nth-child(4n+2) { background: #f0fdfa; }
+        .step:nth-child(4n+3) { background: #f0f9ff; }
+        .step:nth-child(4n+4) { background: #fdf2f8; }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #2f855a;
+        }
+
+        .step-time {
+            font-size: 0.875rem;
+            color: #2f855a;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: #2f855a;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .reviews {
+            padding: 1.5rem;
+            background: #f0fdf4;
+        }
+
+        .review-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .review-tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: #2f855a;
+        }
+
+        .footer {
+            padding: 1.5rem;
+            background: #2f855a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .slogan {
+            font-size: 1.125rem;
+            font-style: italic;
+        }
+
+        .ingredient-category {
+            margin-bottom: 1rem;
+        }
+
+        .ingredient-subtitle {
+            font-size: 1.1rem;
+            color: #2f855a;
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="dish-image">🥘</div>
+            <div class="dish-info">
+                <h1>东北地三鲜</h1>
+                <div class="tags">
+                    <span class="tag">东北名菜</span>
+                    <span class="tag">家常必备</span>
+                    <span class="tag">素菜之王</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cooking-info">
+            <div class="info-item">⏱️ 备料10分钟</div> 
+            <div class="info-item">🔥 烹饪15分钟</div>
+            <div class="info-item">📝 新手可做</div>
+        </div>
+
+        <div class="ingredients">
+            <div class="section-title">🥘 食材配料</div>
+            
+            <div class="ingredient-category">
+                <div class="ingredient-subtitle">主料</div>
+                <div class="ingredient-grid">
+                    <div class="ingredient-item">🍆 长茄子 1根（大）</div>
+                    <div class="ingredient-item">🥔 大土豆 2个</div>
+                    <div class="ingredient-item">🫑 青椒 2个</div>
+                    <div class="ingredient-item">🧄 蒜瓣 3个</div>
+                </div>
+            </div>
+
+            <div class="ingredient-category">
+                <div class="ingredient-subtitle">调味料</div>
+                <div class="ingredient-grid">
+                    <div class="ingredient-item">🥄 生抽 2汤勺</div>
+                    <div class="ingredient-item">🥄 老抽 1茶勺</div>
+                    <div class="ingredient-item">🥄 蚝油 1汤勺</div>
+                    <div class="ingredient-item">🧂 白糖 1茶勺</div>
+                    <div class="ingredient-item">🥄 淀粉 2汤勺</div>
+                    <div class="ingredient-item">🧂 盐 1茶勺</div>
+                    <div class="ingredient-item">🫗 温水 半碗</div>
+                    <div class="ingredient-item">🛢️ 油 适量</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="section-title">📝 烹饪步骤</div>
+            
+            <div class="step">
+                <div class="step-header">
+                    1. 准备食材
+                    <span class="step-time">⏱ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    茄子要选紫皮白瓤、新鲜有光泽的；土豆挑选松黄适中的；青椒选青嫩鲜亮的。蒜瓣拍碎切末。
+                    <div class="key-info">食材新鲜度决定成品口感，建议现买现做</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    2. 切配三样
+                    <span class="step-time">⏱ 7分钟</span>
+                </div>
+                <div class="step-description">
+                    茄子、土豆切大小均匀的滚刀块（约一口大小），青椒切成菱形块。
+                    <div class="key-info">切块大小均匀，保证受热入味一致，口感才地道</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    3. 茄子裹粉
+                    <span class="step-time">⏱ 2分钟</span>
+                </div>
+                <div class="step-description">
+                    茄子块放大碗中，加2汤勺干淀粉，轻轻拌匀。
+                    <div class="key-info">淀粉要裹得均匀，这是控油的关键步骤</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    4. 炸茄子
+                    <span class="step-time">⏱ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    七分热油锅，下入茄子，中火炸至金黄，盛出控油。
+                    <div class="key-info">炸至表面金黄发亮，掐一下软绵有回弹感就好</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    5. 炸土豆
+                    <span class="step-time">⏱ 5分钟</span>
+                </div>
+                <div class="step-description">
+                    同样油温，放入土豆，炸至表皮金黄，盛出控油。
+                    <div class="key-info">用筷子戳能轻松戳透，表面金黄酥脆即可</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    6. 炸青椒
+                    <span class="step-time">⏱ 1分钟</span>
+                </div>
+                <div class="step-description">
+                    最后下青椒快炸10秒，盛出控油。
+                    <div class="key-info">青椒只需断生，保持脆嫩和鲜绿</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    7. 调制料汁
+                    <span class="step-time">⏱ 2分钟</span>
+                </div>
+                <div class="step-description">
+                    小碗中放入：半碗温水、生抽2汤勺、蚝油1汤勺、老抽1茶勺、白糖1茶勺、盐1茶勺，搅拌均匀。
+                    <div class="key-info">料汁调味要提前，保证口味均匀入味</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    8. 煸炒收汁
+                    <span class="step-time">⏱ 3分钟</span>
+                </div>
+                <div class="step-description">
+                    锅留2汤勺油，爆香蒜末，倒入料汁烧开，下入三样食材，快速大火翻炒，收汁入味即可。
+                    <div class="key-info">火候要大，动作要快，保持食材形态完整最重要</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <div class="section-title">⭐ 大厨点评</div>
+            <div class="review-tags">
+                <div class="review-tag">🥘 三味相融</div>
+                <div class="review-tag">👨‍🍳 新手易做</div>
+                <div class="review-tag">🍚 下饭神菜</div>
+                <div class="review-tag">🥗 营养美味</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"一道菜，三种滋味，东北经典的素菜担当"</div>
+        </div>
+    </div>
+</body>
+</html>

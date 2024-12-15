@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宫保鸡丁食谱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 768px; /* 或者更大的百分比 */
+            width: 100%;
+            overflow: hidden;
+            margin-top: 1.5rem;     /* 增加顶部边距 */
+            margin-bottom: 2rem;  /* 增加底部边距 */
+
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e65c00, #F9D423);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .title-section {
+            color: white;
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .info-section {
+            background: #fff8f0;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 0.5rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-start;
+            white-space: nowrap;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .ingredients-section {
+            padding: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+        
+        .ingredient-item {
+            background: #fff8f0;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .steps-section {
+            padding: 1rem;
+        }
+        
+        .step-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .step-description {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .step-key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+        
+        .ratings-section {
+            padding: 1rem;
+        }
+        
+        .ratings-container {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .rating-item {
+            background: #fff8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            background: #fff8f0;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.125rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🍗</div>
+            <div class="title-section">
+                <h1 class="title">宫保鸡丁</h1>
+                <div class="tags">
+                    <span class="tag">川菜</span>
+                    <span class="tag">麻辣</span>
+                    <span class="tag">经典</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-item">⏱️ 备料20分钟</div>
+            <div class="info-item">🔥 烹饪8分钟</div>
+            <div class="info-item">🎯 中等难度</div>
+        </div>
+
+        <div class="ingredients-section">
+            <h2 class="section-title">🥘 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🍗 鸡腿肉 300g</div>
+                <div class="ingredient-item">🥜 花生米 50g</div>
+                <div class="ingredient-item">🧄 大蒜 3瓣</div>
+                <div class="ingredient-item">🧅 葱花 2汤匙</div>
+                <div class="ingredient-item">🥠 生姜 3片</div>
+                <div class="ingredient-item">🌶️ 干辣椒 8个</div>
+                <div class="ingredient-item">🌿 花椒 1茶匙</div>
+                <div class="ingredient-item">🥄 生抽 2汤匙</div>
+                <div class="ingredient-item">🥄 老抽 1茶匙</div>
+                <div class="ingredient-item">🥄 料酒 1汤匙</div>
+                <div class="ingredient-item">🧂 盐 1茶匙</div>
+                <div class="ingredient-item">🍯 白糖 2茶匙</div>
+                <div class="ingredient-item">🥄 醋 2汤匙</div>
+                <div class="ingredient-item">🥄 淀粉 1汤匙</div>
+            </div>
+        </div>
+
+        <div class="steps-section">
+            <h2 class="section-title">📝 制作步骤</h2>
+            <div class="step-item" style="background: #fff8f0;">
+                <div class="step-header">
+                    1. 腌制鸡肉 ⏱️ 15分钟
+                </div>
+                <div class="step-description">鸡腿去骨，带皮切1.5cm见方的丁，加入生抽1汤匙、料酒1汤匙、淀粉1茶匙腌制</div>
+                <div class="step-key-info">切丁大小均匀，保持带皮，防止炒制时变柴</div>
+            </div>
+
+            <div class="step-item" style="background: #fff8f0;">
+                <div class="step-header">
+                    2. 配料准备 ⏱️ 5分钟
+                </div>
+                <div class="step-description">蒜切片，姜切丝，葱切段，干辣椒斜切段，花生米提前炒熟备用</div>
+                <div class="step-key-info">干辣椒去籽，花生米炒至金黄酥脆</div>
+            </div>
+
+            <div class="step-item" style="background: #fff8f0;">
+                <div class="step-header">
+                    3. 调制酱汁 ⏱️ 3分钟
+                </div>
+                <div class="step-description">混合生抽1汤匙、老抽1茶匙、白糖2茶匙、醋2汤匙、盐1茶匙、水1汤匙、淀粉1茶匙</div>
+                <div class="step-key-info">调汁均匀无颗粒，味道要偏咸甜</div>
+            </div>
+
+            <div class="step-item" style="background: #fff8f0;">
+                <div class="step-header">
+                    4. 爆香配料 ⏱️ 2分钟
+                </div>
+                <div class="step-description">热油锅，下花椒、干辣椒中火爆香，炒至辣椒酥脆变色</div>
+                <div class="step-key-info">火候：中火，辣椒须炒至棕红色且略带焦香</div>
+            </div>
+
+            <div class="step-item" style="background: #fff8f0;">
+                <div class="step-header">
+                    5. 最终烹饪 ⏱️ 3分钟
+                </div>
+                <div class="step-description">加入鸡丁大火快炒至七分熟，加入葱姜蒜爆香，倒入酱汁收汁，最后加入花生米</div>
+                <div class="step-key-info">火候：大火快炒，收汁要够干，汤汁均匀裹住鸡丁</div>
+            </div>
+        </div>
+
+        <div class="ratings-section">
+            <h2 class="section-title">⭐ 特色亮点</h2>
+            <div class="ratings-container">
+                <div class="rating-item">🔥 入口麻辣</div>
+                <div class="rating-item">🥜 花生酥香</div>
+                <div class="rating-item">💪 鸡肉嫩滑</div>
+                <div class="rating-item">⚡ 汁亮味浓</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            "麻辣鲜香，汁亮味浓，一品川菜精华"
+        </div>
+    </div>
+</body>
+</html>

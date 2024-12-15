@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: -apple-system, 'Noto Sans SC', sans-serif;
+            background: #FFFBF5;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 768px;/* 或者更大的百分比 */
+            margin: 0 auto;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -5px rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #991B1B, #DC2626);
+            padding: 2rem 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 5l5 10-5 10 5 10-5 10 5 10' stroke='rgba(255,255,255,0.1)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .avatar {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, #FEF2F2, white);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .title {
+            flex-grow: 1;
+        }
+
+        .title h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .cooking-info {
+            background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+            padding: 1rem 1.5rem;
+            margin: 0;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+        }
+
+        .cooking-info-content {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+
+        .cooking-info-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #991B1B;
+        }
+
+        .section {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+            background: white;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #991B1B;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .ingredient {
+            background: linear-gradient(135deg, #FEF2F2, #FFEDD5);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(220, 38, 38, 0.1);
+            color: #991B1B;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #FEF2F2, #FFEDD5);
+            padding: 1.25rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(220, 38, 38, 0.1);
+        }
+
+        .step:nth-child(4n+2) { background: linear-gradient(135deg, #FEF3C7, #FEF2F2); }
+        .step:nth-child(4n+3) { background: linear-gradient(135deg, #FDE68A, #FEF3C7); }
+        .step:nth-child(4n+4) { background: linear-gradient(135deg, #FEE2E2, #FEF2F2); }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #991B1B;
+        }
+
+        .step-time {
+            color: #991B1B;
+            opacity: 0.8;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: #991B1B;
+            margin-top: 0.75rem;
+            border-left: 2px solid #DC2626;
+            padding-left: 0.75rem;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .feature-tag {
+            background: linear-gradient(135deg, #FEF2F2, white);
+            border: 1px solid #FECACA;
+            color: #991B1B;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #FEF2F2, #FFEDD5);
+        }
+
+        .slogan {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #991B1B;
+            text-shadow: 0 1px 2px rgba(220, 38, 38, 0.1);
+        }
+
+        .qrcode {
+            width: 5rem;
+            height: 5rem;
+            background: white;
+            border: 1px solid #FECACA;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #991B1B;
+            box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .cooking-info-content {
+                padding-bottom: 0.5rem;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .header {
+                padding: 1.5rem 1rem;
+            }
+
+            .title h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<!-- HTML内容保持不变 -->
+
+<body>
+    <div class="container">
+        <div class="recipe-card">
+            <header class="header">
+                <div class="header-content">
+                    <div class="avatar">
+                        🌶️
+                    </div>
+                    <div class="title">
+                        <h1>辣子鸡丁</h1>
+                        <div class="tags">
+                            <span class="tag">麻辣鲜香</span>
+                            <span class="tag">川式炒制</span>
+                            <span class="tag">下饭首选</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="cooking-info">
+                <div class="cooking-info-content">
+                    <div class="info-item">⏱️ 备料15分钟</div>
+                    <div class="info-item">🕒 腌制30分钟</div>
+                    <div class="info-item">🔥 烹饪20分钟</div>
+                    <div class="info-item">💪 难度适中</div>
+                </div>
+            </div>
+
+            <section class="section">
+                <h2 class="section-title">🥘 主料配料</h2>
+                <div class="ingredients-grid">
+                    <div class="ingredient">🍗 鸡腿肉 400克</div>
+                    <div class="ingredient">🌶️ 干辣椒 15个</div>
+                    <div class="ingredient">🥚 蛋清 1个</div>
+                    <div class="ingredient">🧄 蒜瓣 4瓣</div>
+                    <div class="ingredient">🧅 姜片 3片</div>
+                    <div class="ingredient">🌿 花椒 2茶勺</div>
+                    <div class="ingredient">🧅 葱花 2汤勺</div>
+                    <div class="ingredient">🥜 白芝麻 1汤勺</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">🥄 调味料</h2>
+                <div class="ingredients-grid">
+                    <div class="ingredient">🍶 料酒 2汤勺</div>
+                    <div class="ingredient">🧂 盐 1茶勺</div>
+                    <div class="ingredient">🍯 生抽 1汤勺</div>
+                    <div class="ingredient">🥄 蚝油 1汤勺</div>
+                    <div class="ingredient">🥄 五香粉 1/2茶勺</div>
+                    <div class="ingredient">🥄 淀粉 2汤勺</div>
+                    <div class="ingredient">🍚 白糖 1/2茶勺</div>
+                    <div class="ingredient">🛢️ 油 适量</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">📝 制作步骤</h2>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">1. 处理鸡肉</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <p>将鸡腿肉切成2cm大小的方块，剔除筋膜</p>
+                    <p class="key-info">🔑 大小均匀，确保炸制受热一致</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">2. 腌制调味</div>
+                        <div class="step-time">⏱️ 30分钟</div>
+                    </div>
+                    <p>鸡块中加入料酒2汤勺、盐1茶勺、五香粉1/2茶勺、生抽1汤勺、蚝油1汤勺，抓匀腌制</p>
+                    <p class="key-info">🔑 腌制时将食材放入冰箱，保持新鲜度</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">3. 准备配料</div>
+                        <div class="step-time">⏱️ 10分钟</div>
+                    </div>
+                    <p>蒜瓣切碎，姜片切丝，干辣椒剪段，葱切段</p>
+                    <p class="key-info">🔑 辣椒剪成1.5cm小段，去籽可减少辣度</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">4. 裹粉</div>
+                        <div class="step-time">⏱️ 5分钟</div>
+                    </div>
+                    <p>腌好的鸡块中加入蛋清和淀粉2汤勺，抓匀裹浆</p>
+                    <p class="key-info">🔑 确保每块鸡肉均匀裹上薄薄一层</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">5. 第一次油炸</div>
+                        <div class="step-time">⏱️ 6-7分钟</div>
+                    </div>
+                    <p>油温7成热（约170度），炸至鸡块金黄酥脆</p>
+                    <p class="key-info">🔑 分批下锅，避免粘连，不要炸太多</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">6. 复炸</div>
+                        <div class="step-time">⏱️ 1-2分钟</div>
+                    </div>
+                    <p>油温升至8成热（约190度），快速复炸上色</p>
+                    <p class="key-info">🔑 注意火候，避免炸过头变干</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">7. 爆香调味</div>
+                        <div class="step-time">⏱️ 3-4分钟</div>
+                    </div>
+                    <p>另起锅，小火爆香姜丝蒜末，加入花椒和干辣椒爆香，大火翻炒鸡块</p>
+                    <p class="key-info">🔑 注意火候，避免将香料炒糊</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-title">8. 调味收尾</div>
+                        <div class="step-time">⏱️ 2分钟</div>
+                    </div>
+                    <p>加入白糖调味，撒入葱花和白芝麻，快速翻炒出锅</p>
+                    <p class="key-info">🔑 最后大火快炒，保持鸡肉酥脆</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">⭐ 特色亮点</h2>
+                <div class="features">
+                    <span class="feature-tag">🌶️ 麻辣适中不燥热</span>
+                    <span class="feature-tag">🍗 外酥内嫩多汁</span>
+                    <span class="feature-tag">🎯 完美下饭菜品</span>
+                    <span class="feature-tag">💫 川味经典小炒</span>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="slogan">"麻辣鲜香，川味飘香"</div>
+                <div class="qrcode">扫码</div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

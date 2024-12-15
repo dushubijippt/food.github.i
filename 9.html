@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 16px;
+        }
+        
+        .container {
+            max-width: 768px;/* 或者更大的百分比 */
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #D94E26, #F97316);
+            padding: 24px;
+            color: white;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+            margin: 4px;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+        }
+        
+        .tag:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .info-bar {
+            display: flex;
+            gap: 24px;
+            padding: 16px 24px;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section {
+            padding: 24px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .ingredient {
+            background: #FEF2F2;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .step {
+            background: #FEF2F2;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .sauce-mix {
+            background: #FFEDD5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            
+            .section {
+                padding: 16px;
+            }
+            
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div style="display: flex; align-items: center;">
+                    <div class="avatar">🥘</div>
+                    <div>
+                        <h1 style="margin:0 0 8px 0; font-size:24px; font-weight:bold">家常豆腐</h1>
+                        <div>
+                            <span class="tag">川式家常</span>
+                            <span class="tag">香辣开胃</span>
+                            <span class="tag">下饭神器</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-bar">
+                <span class="info-item">⏱️ 总用时 25分钟</span>
+                <span class="info-item">🔥 难度 新手</span>
+                <span class="info-item">💪 热量 中等</span>
+            </div>
+
+            <div class="section">
+                <div class="title">📝 主料</div>
+                <div class="grid">
+                    <div class="ingredient">🧊 老豆腐 380g</div>
+                    <div class="ingredient">🍄 木耳 3-4朵</div>
+                    <div class="ingredient">🥕 胡萝卜 半根</div>
+                    <div class="ingredient">🫑 青椒 1个</div>
+                    <div class="ingredient">🧅 葱 2段</div>
+                    <div class="ingredient">🧄 蒜 3瓣</div>
+                </div>
+                
+                <div class="title" style="margin-top:24px">🧂 调料</div>
+                <div class="grid">
+                    <div class="ingredient">🌶️ 豆瓣酱 1汤勺</div>
+                    <div class="ingredient">🫘 豆豉 1茶勺</div>
+                    <div class="ingredient">🥄 生抽 1汤勺</div>
+                    <div class="ingredient">🍯 蚝油 1茶勺</div>
+                    <div class="ingredient">🧂 盐 1/2茶勺</div>
+                    <div class="ingredient">🌾 淀粉 1茶勺</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="title">👨‍🍳 步骤</div>
+                
+                <div class="step">
+                    <div class="step-header">
+                        <h3 style="margin:0;font-weight:500">1. 备料</h3>
+                        <span>⏱️ 5分钟</span>
+                    </div>
+                    <p style="margin:4px 0">① 豆腐切块，盐水泡</p>
+                    <p style="margin:4px 0">② 沥干水分</p>
+                </div>
+
+                <div class="step" style="background:#FFF7ED">
+                    <div class="step-header">
+                        <h3 style="margin:0;font-weight:500">2. 配料</h3>
+                        <span>⏱️ 5分钟</span>
+                    </div>
+                    <p style="margin:4px 0">① 木耳焯水，青椒胡萝卜切片</p>
+                    <p style="margin:4px 0">② 葱蒜末，豆豉碎</p>
+                    <div class="sauce-mix">
+                        调味汁：生抽1汤勺 + 蚝油1茶勺 + 淀粉1茶勺 + 水4汤勺
+                    </div>
+                </div>
+
+                <div class="step" style="background:#FFFBEB">
+                    <div class="step-header">
+                        <h3 style="margin:0;font-weight:500">3. 煎豆腐</h3>
+                        <span>⏱️ 6分钟</span>
+                    </div>
+                    <p style="margin:4px 0">① 中小火，两面金黄</p>
+                    <p style="margin:4px 0">② 盛出备用</p>
+                </div>
+
+                <div class="step" style="background:#FEF3C7">
+                    <div class="step-header">
+                        <h3 style="margin:0;font-weight:500">4. 调味</h3>
+                        <span>⏱️ 3分钟</span>
+                    </div>
+                    <p style="margin:4px 0">① 葱蒜爆香</p>
+                    <p style="margin:4px 0">② 豆豉豆瓣炒红油</p>
+                    <p style="margin:4px 0">③ 加配菜</p>
+                    <p style="margin:4px 0">④ 放豆腐，倒汁</p>
+                </div>
+            </div>
+
+            <div class="section" style="background:#f5f5f5">
+                <div class="title">💫 特色</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                    <span class="tag" style="background:white">麻辣鲜香</span>
+                    <span class="tag" style="background:white">外酥内嫩</span>
+                    <span class="tag" style="background:white">米饭绝配</span>
+                    <span class="tag" style="background:white">新手易学</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

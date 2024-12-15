@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可乐鸡翅烹饪指南</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 前面的样式保持不变 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        
+        .recipe-card {
+            background: white;
+            max-width: 768px;/* 或者更大的百分比 */
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #95442E, #C66B4E);
+            padding: 2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .dish-image {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;/*保持圆形*/
+            aspect-ratio: 1/1;  /* 添加这行确保宽高比永远是1:1 */
+        }
+        
+        .dish-info h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            min-width: 0; /* 允许子元素收缩 */
+            flex: 1; /* 允许占据剩余空间 */
+        }
+        
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            /* 修改以下属性 */
+            overflow-x: auto; /* 允许水平滚动 */
+            white-space: nowrap; /* 防止文本换行 */
+            width: 100%; /* 确保占满容器宽度 */
+            flex-wrap: nowrap; /* 禁止换行 */
+            -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
+            scrollbar-width: none; /* Firefox隐藏滚动条 */
+            -ms-overflow-style: none; /* IE和Edge隐藏滚动条 */
+            padding-bottom: 5px; /* 底部留出间距 */
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .cooking-info {
+            background: #FFF8F3;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-around;
+            /* 移除 flex-wrap: wrap */
+            gap: 1rem;
+            font-size: 1rem;
+            /* 添加以下属性 */
+            overflow-x: auto; /* 允许横向滚动 */
+            white-space: nowrap; /* 防止文字换行 */
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+            scrollbar-width: none; /* 隐藏滚动条 */
+            -ms-overflow-style: none;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ingredients {
+            padding: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #95442E;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .ingredient-item {
+            background: #FFF8F3;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .steps {
+            padding: 1.5rem;
+        }
+        
+        .step-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .step-content {
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+        
+        .ratings-section {
+            padding: 1.5rem;
+            background: #FFF8F3;
+        }
+        
+        .ratings {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .rating-item {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer {
+            background: #95442E;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .slogan {
+            font-style: italic;
+            font-size: 1rem;
+        }
+        
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="dish-image">🍗</div>
+            <div class="dish-info">
+                <h1>可乐鸡翅</h1>
+                <div class="tags">
+                    <span class="tag">甜香</span>
+                    <span class="tag">酱香</span>
+                    <span class="tag">零难度</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cooking-info">
+            <div class="info-item">⏱️ 准备：10分钟</div>
+            <div class="info-item">🔥 烹饪：25分钟</div>
+            <div class="info-item">📊 难度：简单</div>
+        </div>
+
+        <div class="ingredients">
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🍗 鸡翅 12个</div>
+                <div class="ingredient-item">🥤 可乐 1罐</div>
+                <div class="ingredient-item">🍺 啤酒 2汤勺</div>
+                <div class="ingredient-item">🧂 盐 1茶勺</div>
+                <div class="ingredient-item">🧄 姜片 3片</div>
+                <div class="ingredient-item">🫙 生抽 1汤勺</div>
+                <div class="ingredient-item">🫙 老抽 1/2茶勺</div>
+                <div class="ingredient-item">🌱 白芝麻 1茶勺</div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="section-title">📝 制作步骤</div>
+            <div class="step-item" style="background: #FFF8F3;">
+                <div class="step-header">
+                    <span>1. 处理鸡翅</span>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <div class="step-content">
+                    清洗鸡翅，背面划两刀增加入味，控干水分备用
+                    <div class="key-info">刀口深度以能看到肉为准，不要划断，刀口均匀，便于入味</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #FFF1E6;">
+                <div class="step-header">
+                    <span>2. 焯水</span>
+                    <span>⏱️ 4分钟</span>
+                </div>
+                <div class="step-content">
+                    锅中加入冷水，放入2片姜片，将鸡翅放入，大火煮开后继续煮2分钟
+                    <div class="key-info">焯水可去腥去血水，水开后开始计时，煮2分钟即可，捞出洗净控干</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #FFEAD7;">
+                <div class="step-header">
+                    <span>3. 煎制上色</span>
+                    <span>⏱️ 6分钟</span>
+                </div>
+                <div class="step-content">
+                    不粘锅中刷一层薄油，中火将鸡翅煎至两面金黄，每面约3分钟
+                    <div class="key-info">油温6成热时放入鸡翅，煎至表面金黄酥香，不要煎过头</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #FFE4CC;">
+                <div class="step-header">
+                    <span>4. 调香提味</span>
+                    <span>⏱️ 4分钟</span>
+                </div>
+                <div class="step-content">
+                    放入剩余姜片切丝，倒入啤酒炒香，加入1汤勺生抽和1/2茶勺老抽
+                    <div class="key-info">先用啤酒炒出香气，等啤酒略微收干后再加入酱油调色提味</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #FFDDC2;">
+                <div class="step-header">
+                    <span>5. 可乐焖煮</span>
+                    <span>⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    倒入一整罐可乐，大火烧开后转中小火，盖上锅盖焖煮
+                    <div class="key-info">焖煮至可乐减少一半时加入1茶勺盐调味，此时汤汁略稠</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #FFD4B8;">
+                <div class="step-header">
+                    <span>6. 收汁装盘</span>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <div class="step-content">
+                    开大火收汁，不断翻炒至汤汁浓稠裹住鸡翅，撒上白芝麻
+                    <div class="key-info">最后阶段要不停翻炒防止糊锅，以鸡翅表面油亮、汤汁浓稠为准</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ratings-section">
+            <div class="section-title">⭐ 美味评价</div>
+            <div class="ratings">
+                <div class="rating-item">👨‍👩‍👧‍👦 适合家庭</div>
+                <div class="rating-item">⭐ 零失败</div>
+                <div class="rating-item">🔥 下饭神器</div>
+                <div class="rating-item">📝 新手友好</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"甜香浓郁，色泽诱人，一口难忘的经典美味"</div>
+            <div class="qr-placeholder"></div>
+        </div>
+    </div>
+</body>
+</html>

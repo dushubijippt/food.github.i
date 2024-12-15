@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒜蓉粉丝虾</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            padding: 1rem;
+        }
+
+        .recipe-card {
+            max-width: 768px;
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #00a3c4, #0077be);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .title-section {
+            color: white;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .info-section {
+            background: #e6f3f7;
+            padding: 1rem 1.5rem;
+            display: flex;
+            gap: 2rem;
+            font-size: 1rem;
+            align-items: center;
+        }
+
+        .ingredients {
+            padding: 1.5rem;
+            background: #fff;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .ingredient-item {
+            background: #e6f3f7;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .steps {
+            padding: 1.5rem;
+        }
+
+        .step-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .step-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .key-info {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        .ratings {
+            padding: 1.5rem;
+            background: #f8fafc;
+        }
+
+        .rating-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .rating-pill {
+            background: #e6f3f7;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer {
+            padding: 1.5rem;
+            background: #e6f3f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 1.125rem;
+            color: #4a5568;
+        }
+
+        .qr-placeholder {
+            width: 60px;
+            height: 60px;
+            background: #cbd5e0;
+            border-radius: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .info-section {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <div class="header">
+            <div class="avatar">🦐</div>
+            <div class="title-section">
+                <div class="title">蒜蓉粉丝虾</div>
+                <div class="tags">
+                    <span class="tag">海鲜</span>
+                    <span class="tag">蒜香</span>
+                    <span class="tag">开胃</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div>⏱️ 备料10分钟</div>
+            <div>🔥 烹饪25分钟</div>
+            <div>💪 普通难度</div>
+        </div>
+
+        <div class="ingredients">
+            <div class="section-title">🥘 食材及调料</div>
+            <div class="ingredient-grid">
+                <div class="ingredient-item">🦐 基围虾 10只</div>
+                <div class="ingredient-item">🍜 绿豆粉丝 1把</div>
+                <div class="ingredient-item">🧄 蒜瓣 10瓣</div>
+                <div class="ingredient-item">🌶️ 小米辣 4个</div>
+                <div class="ingredient-item">🌱 小葱 2根</div>
+                <div class="ingredient-item">🥄 蚝油 1汤勺</div>
+                <div class="ingredient-item">🥄 蒸鱼豉油 3汤勺</div>
+                <div class="ingredient-item">🧂 白糖 1茶勺</div>
+                <div class="ingredient-item">🍗 鸡汁 2茶勺</div>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="section-title">📝 制作步骤</div>
+            
+            <div class="step-item" style="background: #e6f3f7;">
+                <div class="step-header">
+                    <span>1. 泡发粉丝</span>
+                    <span>⏱️ 8分钟</span>
+                </div>
+                <div class="step-content">
+                    开水煮粉丝5分钟，关火后继续浸泡
+                    <div class="key-info">用手能掐断时即可，务必避免泡软过度</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #e7f4e8;">
+                <div class="step-header">
+                    <span>2. 备料</span>
+                    <span>⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    蒜瓣剁碎分两份，小米辣去籽切碎
+                    <div class="key-info">蒜蓉要剁细腻均匀，辣椒籽去净防苦</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #e6f3f7;">
+                <div class="step-header">
+                    <span>3. 炒制蒜蓉</span>
+                    <span>⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    小火炸一半蒜蓉至淡黄，加入剩余生蒜和辣椒
+                    <div class="key-info">油温3成，蒜蓉变色立即关火防苦</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #e7f4e8;">
+                <div class="step-header">
+                    <span>4. 调制酱汁</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    加入蒸鱼豉油3汤勺、蚝油1汤勺、鸡汁2茶勺、白糖1茶勺
+                    <div class="key-info">充分搅拌均匀，保持酱汁浓稠适中</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #e6f3f7;">
+                <div class="step-header">
+                    <span>5. 处理虾</span>
+                    <span>⏱️ 8分钟</span>
+                </div>
+                <div class="step-content">
+                    去头去须，保留虾壳，背部剖开去虾线
+                    <div class="key-info">剖至尾部留一节完整，确保形状美观</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #e7f4e8;">
+                <div class="step-header">
+                    <span>6. 摆盘蒸制</span>
+                    <span>⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    铺粉丝，摆虾，淋蒜蓉酱，大火蒸制
+                    <div class="key-info">虾背朝下整齐排列，蒸至虾肉变色即可</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #e6f3f7;">
+                <div class="step-header">
+                    <span>7. 最终装饰</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    撒葱花，淋热油提香
+                    <div class="key-info">热油要滚烫，快速浇淋激发香气</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ratings">
+            <div class="section-title">⭐ 特色亮点</div>
+            <div class="rating-pills">
+                <span class="rating-pill">🌟 虾肉鲜嫩</span>
+                <span class="rating-pill">🧄 蒜香浓郁</span>
+                <span class="rating-pill">🔥 层次丰富</span>
+                <span class="rating-pill">💯 色香俱全</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="slogan">"蒜香四溢，鲜嫩弹滑"</div>
+            <div class="qr-placeholder"></div>
+        </div>
+    </div>
+</body>
+</html>

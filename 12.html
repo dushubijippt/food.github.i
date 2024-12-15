@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>青椒炒肉食谱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 768px; /* 或者更大的百分比 */
+            width: 100%;
+            padding: 1rem;
+            margin: 1% 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF4E50 0%, #F9D423 100%);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .info-section {
+            background: #fff5f5;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            font-size: 1rem;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .ingredients-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .ingredient-item {
+            background: #fff5f5;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .steps-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .step-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .step-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .step-note {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        .ratings {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .rating-item {
+            background: #fff5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: #fff5f5;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .slogan {
+            font-style: italic;
+        }
+
+        .qr-placeholder {
+            width: 60px;
+            height: 60px;
+            background: #ddd;
+            border-radius: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .recipe-card {
+                padding: 1rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .info-section {
+                padding: 1rem 0.5rem;
+            }
+
+            .ingredients-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <header class="header">
+            <div class="avatar">🌶️</div>
+            <div class="title-section">
+                <h1>青椒炒肉</h1>
+                <div class="tags">
+                    <span class="tag">湘菜</span>
+                    <span class="tag">下饭</span>
+                    <span class="tag">快手</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="info-section">
+            <div class="info-item">⏱️ 备料10分钟</div>
+            <div class="info-item">🔥 烹饪15分钟</div>
+            <div class="info-item">📊 新手可做</div>
+        </section>
+
+        <section class="ingredients-section">
+            <h2 class="section-title">🥘 食材及调料</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">🥩 猪腿肉：250g</div>
+                <div class="ingredient-item">🫑 青椒：8个</div>
+                <div class="ingredient-item">🧄 蒜：4瓣</div>
+                <div class="ingredient-item">🧂 姜：3片</div>
+                <div class="ingredient-item">🍶 生抽：1汤勺</div>
+                <div class="ingredient-item">🍶 老抽：1茶勺</div>
+            </div>
+        </section>
+
+        <section class="steps-section">
+            <h2 class="section-title">📝 制作步骤</h2>
+            
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>1. 备料</span>
+                    <span>⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    选用螺丝椒和线椒各4个，去蒂洗净。
+                    <div class="step-note">选青椒时要青翠饱满，无皱褶</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>2. 切配</span>
+                    <span>⏱️ 5分钟</span>
+                </div>
+                <div class="step-content">
+                    青椒斜切3cm段，姜切片，蒜拍碎，猪肉分开肥瘦切片。
+                    <div class="step-note">肉片切2mm薄片，保持均匀</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>3. 炒肥肉</span>
+                    <span>⏱️ 3分钟</span>
+                </div>
+                <div class="step-content">
+                    小火，锅中放油烧热，放入肥肉片，慢炸出油脂。
+                    <div class="step-note">油温勿过高，火候保持3成热</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>4. 爆香料</span>
+                    <span>⏱️ 1分钟</span>
+                </div>
+                <div class="step-content">
+                    加入姜片、蒜末爆香。
+                    <div class="step-note">闻到香味即可，勿炸糊</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>5. 炒瘦肉</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    加入瘦肉片快速翻炒，加入生抽、老抽调色。
+                    <div class="step-note">肉变色即可，勿过火</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>6. 盛肉</span>
+                    <span>⏱️ 1分钟</span>
+                </div>
+                <div class="step-content">
+                    将炒好的肉盛出备用，锅中留油。
+                    <div class="step-note">这步避免肉质变柴，很关键</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>7. 炒青椒</span>
+                    <span>⏱️ 2分钟</span>
+                </div>
+                <div class="step-content">
+                    原锅中加入青椒快速翻炒至虎皮状。
+                    <div class="step-note">青椒表面起皱即可，保持脆嫩</div>
+                </div>
+            </div>
+
+            <div class="step-item" style="background: #fff5f5;">
+                <div class="step-header">
+                    <span>8. 收汁</span>
+                    <span>⏱️ 1分钟</span>
+                </div>
+                <div class="step-content">
+                    放入炒好的肉片，大火快速翻炒均匀。
+                    <div class="step-note">火候要快，保持青椒脆嫩</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ratings">
+            <div class="rating-item">🌶️ 微辣可口</div>
+            <div class="rating-item">🥘 快炒入味</div>
+            <div class="rating-item">🍚 饭菜首选</div>
+            <div class="rating-item">💪 营养均衡</div>
+        </section>
+
+        <footer class="footer">
+            <div class="slogan">"香辣爽口，经典湘味"</div>
+            <div class="qr-placeholder"></div>
+        </footer>
+    </div>
+</body>
+</html>
